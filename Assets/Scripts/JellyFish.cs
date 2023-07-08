@@ -8,12 +8,18 @@ using UnityEngine.SceneManagement;
 public class JellyFish : BaseActor
 {
     public int lightNum;
+    public float sizePerLightNum;
     public float durationPerLightNum;
     public float restDashDuration;
+    private float dashDurationPercentage;
     public float dashCD;
     private float curDashCD;
     private bool canRecoverDash;
     public Transform lightSphere;
+
+    public Transform lightSpots_1;
+    public Transform lightSpots_2;
+    public Transform lightSpots_3;
 
     [HideInInspector]
     public UnityEvent dashEvent;
@@ -39,10 +45,13 @@ public class JellyFish : BaseActor
 
         LightSphereControl();
         DashControl();
+        LightSpotControl();
     }
 
     public void LightSphereControl()
     {
+        size = 1 + (lightNum-1) * sizePerLightNum;
+
         lightSphere.localScale = curSize * Vector3.one;
         // lightSphere.GetComponent<UnityEngine.Rendering.Universal.Light2D>().pointLightOuterRadius = curSize;
     }
@@ -100,5 +109,12 @@ public class JellyFish : BaseActor
         acceleration = acceleration / dashFactor;
 
         curDashCD = dashCD;
+    }
+
+    public void LightSpotControl()
+    {
+        dashDurationPercentage = restDashDuration / lightNum * durationPerLightNum;
+
+        
     }
 }

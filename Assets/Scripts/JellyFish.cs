@@ -9,7 +9,7 @@ public class JellyFish : BaseActor
 {
     public int lightNum;
     public float durationPerLightNum;
-    private float restDashDuration;
+    public float restDashDuration;
     public Transform lightSphere;
 
     [HideInInspector]
@@ -49,14 +49,22 @@ public class JellyFish : BaseActor
             restDashDuration -= Time.deltaTime;
         }
 
-        // if (restDashDuration <= 0f) isDashing = false;
+        if (restDashDuration < 0f) 
+        {
+            isDashing = false;
+            exitDashEvent.Invoke();
+            restDashDuration = 0f;
+        }
         
     }
 
     public void Dash()
     {
-        float restDashDuration = lightNum * durationPerLightNum;
-        print(restDashDuration);
+        if (isDashing) return;
+
+        isDashing = true;
+
+        restDashDuration = lightNum * durationPerLightNum;
 
         speed = speed * dashFactor;
         acceleration = acceleration * dashFactor;
@@ -64,6 +72,10 @@ public class JellyFish : BaseActor
 
     public void ExitDash()
     {
+        if (!isDashing) return;
+
+        isDashing = false;
+
         float restDashDuration = 0f;
 
         speed = speed / dashFactor;

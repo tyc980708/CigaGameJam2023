@@ -48,12 +48,10 @@ public class Avatar : JellyFish
     {
         if (Input.GetKeyDown(KeyCode.Space)) 
         {
-            isDashing = true;
             dashEvent.Invoke();
         }
         if (Input.GetKeyUp(KeyCode.Space)) 
         {
-            isDashing = false;
             exitDashEvent.Invoke();
         }
     }

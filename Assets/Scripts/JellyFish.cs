@@ -47,6 +47,7 @@ public class JellyFish : BaseActor
         LightSphereControl();
         DashControl();
         LightSpotControl();
+        EvoControl();
     }
 
     public void LightSphereControl()
@@ -182,5 +183,16 @@ public class JellyFish : BaseActor
             lightSpot_3.isDashing = false;
         }
         
+    }
+
+    public void EvoControl()
+    {
+        if (evoLevel >= 3f) return;
+
+        if (lightNum > 2)
+        {
+            evoLevel += 1f;
+            lightNum = 1;
+        }
     }
 }

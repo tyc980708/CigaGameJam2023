@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 
 public class JellyFish : BaseActor
 {
-    public float evoLevel = 1f;
     public int lightNum;
     public float sizePerLightNum;
     public float durationPerLightNum;
@@ -64,7 +63,7 @@ public class JellyFish : BaseActor
 
     public void LightSphereControl()
     {
-        size = 0.5f + (lightNum + 3f * (evoLevel - 1f)) * touchedRecoverFactor;
+        size = 0.5f + (lightNum + 3f * (evoLevel - 1f)) * sizePerLightNum * touchedRecoverFactor;
 
         if (touchedRecoverFactor < 1f)
         {

@@ -18,6 +18,7 @@ public class Avatar : JellyFish
         base.Update();
 
         DashControl();
+        CallControl();
     }
 
     public void FixedUpdate()
@@ -53,6 +54,14 @@ public class Avatar : JellyFish
         if (Input.GetKeyUp(KeyCode.Space)) 
         {
             exitDashEvent.Invoke();
+        }
+    }
+
+    public void CallControl()
+    {
+        if (Input.GetMouseButtonDown(0)) 
+        {
+            DoCall();
         }
     }
 }

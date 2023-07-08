@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class BaseActor : MonoBehaviour
 {
+    public float evoLevel = 1f;
+
     public bool isDashing;
     public float dashFactor;
     public float size;
@@ -13,6 +15,7 @@ public class BaseActor : MonoBehaviour
     public float acceleration;
     public float steerLerpRatio;
     public bool isCalled;
+    public Wave wave;
 
     [HideInInspector]
     public float curSize; 
@@ -32,6 +35,7 @@ public class BaseActor : MonoBehaviour
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        wave = transform.Find("Wave").GetComponent<Wave>();
     }
 
     // Update is called once per frame
@@ -66,10 +70,12 @@ public class BaseActor : MonoBehaviour
         if (isDashing)
         {
             animator.SetBool("isDashing", true);
+            animator.SetFloat("PlaySpeed", 1.75f);
         }
         else
         {
             animator.SetBool("isDashing", false);
+            animator.SetFloat("PlaySpeed", 1f);
         }
     }
 
@@ -77,10 +83,11 @@ public class BaseActor : MonoBehaviour
     {
         curSize = Mathf.Lerp(curSize, size, 2f * Time.deltaTime);
         curAcceleration = Mathf.Lerp(curAcceleration, acceleration, 5f * Time.deltaTime);
+        wave.evoLevel = evoLevel;
     }
 
     public void DoCall()
     {
-        
+        wave.isCalled = true;
     }
 }

@@ -16,6 +16,8 @@ public class Avatar : JellyFish
     public void Update()
     {
         base.Update();
+
+        DashControl();
     }
 
     public void FixedUpdate()
@@ -32,12 +34,27 @@ public class Avatar : JellyFish
         if (Input.GetKey(KeyCode.W)) 
         {
             if (curSpeed < speed) curSpeed += curAcceleration * Time.fixedDeltaTime;
+            if (curSpeed > speed) curSpeed = speed;
         }
         else
         {
             if (curSpeed > 0f) curSpeed -= curAcceleration * Time.fixedDeltaTime;
         }
 
-        DoMove(mouseScreenPosition, curSpeed);
+        DoMove(mouseScreenPosition);
+    }
+
+    public void DashControl()
+    {
+        if (Input.GetKeyDown(KeyCode.Space)) 
+        {
+            isDashing = true;
+            dashEvent.Invoke();
+        }
+        if (Input.GetKeyUp(KeyCode.Space)) 
+        {
+            isDashing = false;
+            exitDashEvent.Invoke();
+        }
     }
 }

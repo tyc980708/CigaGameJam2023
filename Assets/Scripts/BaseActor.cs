@@ -6,12 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class BaseActor : MonoBehaviour
 {
-    public bool isDashing = false;
+    public bool isDashing;
+    public float dashFactor;
     public float size;
     public float speed;
     public float acceleration;
     public float steerLerpRatio;
-    public bool isCalled = false;
+    public bool isCalled;
 
     [HideInInspector]
     public float curSize; 
@@ -35,7 +36,7 @@ public class BaseActor : MonoBehaviour
         ParametersControl();
     }
 
-    public void DoMove(Vector2 position, float speed)
+    public void DoMove(Vector2 position)
     {
         // get direction you want to point at
         Vector2 targetDirection = (position - (Vector2)transform.position).normalized;

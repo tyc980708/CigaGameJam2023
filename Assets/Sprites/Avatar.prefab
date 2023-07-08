@@ -101,7 +101,7 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 0.81393844, g: 1, b: 0.5411765, a: 1}
+  m_Color: {r: 0.5411765, g: 1, b: 0.7693891, a: 1}
   m_Intensity: 0.1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 1
@@ -163,7 +163,7 @@ Transform:
   m_GameObject: {fileID: 2784733376397293366}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 30, y: 20, z: 1}
+  m_LocalScale: {x: 50, y: 50, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1036439576205827044}
@@ -271,6 +271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDashing: 0
+  dashFactor: 2
   size: 2
   speed: 1.5
   acceleration: 2
@@ -280,9 +281,15 @@ MonoBehaviour:
   curSpeed: 0
   curAcceleration: 0
   rb: {fileID: 0}
-  lightNum: 0
-  dashFactor: 2
+  lightNum: 1
+  durationPerLightNum: 2
   lightSphere: {fileID: 0}
+  dashEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  exitDashEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!212 &2456158209781516814
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -324,12 +331,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
-  m_Color: {r: 0.56225526, g: 0.8003337, b: 0.8962264, a: 1}
+  m_Sprite: {fileID: -2346044687208593066, guid: 5c9244c293fb19348af9d891cd69ff7f, type: 3}
+  m_Color: {r: 1, g: 0.95276177, b: 0.7216981, a: 0.23921569}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.396, y: 1.21}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

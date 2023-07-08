@@ -21,6 +21,9 @@ public class BaseActor : MonoBehaviour
     [HideInInspector]
     public float curAcceleration;
 
+    [HideInInspector]
+    public Animator animator;
+
 
     public Rigidbody2D rb;
 
@@ -28,6 +31,7 @@ public class BaseActor : MonoBehaviour
     public void Start()
     {
         rb = gameObject.GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -48,6 +52,16 @@ public class BaseActor : MonoBehaviour
         Vector2 velocity = transform.up * curSpeed;
 
         rb.MovePosition((Vector2)transform.position + velocity * Time.fixedDeltaTime);
+
+        // Animator
+        if (curSpeed > 0)
+        {
+            animator.SetBool("isMove", true);
+        }
+        else
+        {
+            animator.SetBool("isMove", false);
+        }
     }
 
     public void ParametersControl()

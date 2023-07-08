@@ -584,10 +584,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LightSpot
       objectReference: {fileID: 0}
-    - target: {fileID: 7415427579069940168, guid: 5e81102cfa1bb594cbe802d82fdfd381, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

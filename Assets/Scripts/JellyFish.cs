@@ -17,9 +17,9 @@ public class JellyFish : BaseActor
     private bool canRecoverDash;
     public Transform lightSphere;
 
-    public Transform lightSpots_1;
-    public Transform lightSpots_2;
-    public Transform lightSpots_3;
+    public LightSpot lightSpot_1;
+    public LightSpot lightSpot_2;
+    public LightSpot lightSpot_3;
 
     [HideInInspector]
     public UnityEvent dashEvent;
@@ -115,6 +115,30 @@ public class JellyFish : BaseActor
     {
         dashDurationPercentage = restDashDuration / lightNum * durationPerLightNum;
 
-        
+        if (dashDurationPercentage > 0.666)
+        {
+            
+        }
+        else if (dashDurationPercentage <= 0.666 && dashDurationPercentage > 0.333)
+        {
+            
+        }
+        else if (dashDurationPercentage <= 0.333 && dashDurationPercentage >= 0)
+        {
+
+        }
+
+        if (isDashing)
+        {
+            lightSpot_1.isDashing = true;
+            lightSpot_2.isDashing = true;
+            lightSpot_3.isDashing = true;
+        }
+        else
+        {
+            lightSpot_1.isDashing = false;
+            lightSpot_2.isDashing = false;
+            lightSpot_3.isDashing = false;
+        }
     }
 }

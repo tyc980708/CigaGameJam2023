@@ -519,6 +519,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1371741539728635799, guid: bc0f9cdf5c3d0e449bf5829ae7e5c5cb, type: 3}
+      propertyPath: durationPerLightNum
+      value: 3.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8526060843679919061, guid: bc0f9cdf5c3d0e449bf5829ae7e5c5cb, type: 3}
       propertyPath: m_Name
       value: Avatar

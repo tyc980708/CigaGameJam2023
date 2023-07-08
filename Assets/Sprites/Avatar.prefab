@@ -369,6 +369,9 @@ MonoBehaviour:
   lightSpot_1: {fileID: 2068686849859013260}
   lightSpot_2: {fileID: 7348375125018259912}
   lightSpot_3: {fileID: 4891104156466750655}
+  isHelped: 0
+  isInDanger: 0
+  touchedRecoverFactor: 1
   dashEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -488,7 +491,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e666fa5ee5baa944ea1bae9bd2636426, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AudioSource: {fileID: 3987212532020010056}
+  audioSource: {fileID: 3987212532020010056}
 --- !u!82 &3987212532020010056
 AudioSource:
   m_ObjectHideFlags: 0

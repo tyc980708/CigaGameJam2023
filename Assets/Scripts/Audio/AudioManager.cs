@@ -5,6 +5,11 @@ using UnityEngine.Audio;
 
 public static class AudioManager
 {
+    public static void PlaySound(string eventName)
+    {
+
+    }
+
     public static IEnumerator StartFade(AudioMixer audioMixer, string exposedParam, float duration, float targetVolume)
     {
         float currentTime = 0;
@@ -20,5 +25,20 @@ public static class AudioManager
             yield return null;
         }
         yield break;
+    }
+
+    public static IEnumerator FadeOut(AudioSource audioSource, float FadeTime)
+    {
+        float startVolume = audioSource.volume;
+
+        while (audioSource.volume > 0)
+        {
+            audioSource.volume -= startVolume * Time.deltaTime / FadeTime;
+
+            yield return null;
+        }
+
+        audioSource.Stop();
+        audioSource.volume = startVolume;
     }
 }

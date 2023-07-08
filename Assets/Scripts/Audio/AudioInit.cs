@@ -10,7 +10,7 @@ public class AudioInit : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(AudioManager.StartFade(audioMixer, "MasterVolume", 2.0f, 100f));
+        StartCoroutine(AudioManager.StartFade(audioMixer, "MasterVolume", 5.0f, 100f));
     }
 
     // Update is called once per frame

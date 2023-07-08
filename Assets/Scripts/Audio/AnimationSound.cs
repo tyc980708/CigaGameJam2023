@@ -12,7 +12,7 @@ public class AnimationSound : MonoBehaviour
         var random = soundEvent.intParameter;
         var loop = soundEvent.floatParameter;
         var eventName = soundEvent.stringParameter;
-        if (eventName == "StopLoop")
+        if (isLooping && loop != 1)
         {
             isLooping = false;
             audioSource.loop = false;

@@ -5,8 +5,23 @@ using UnityEngine.Audio;
 
 public static class AudioManager
 {
-    public static void PlaySound(string eventName)
+    public static AudioInit globalEmitter;
+
+    public static void PlaySound(string eventName, int pitchFactor = 0, bool randomPitch = false)
     {
+        var ge = globalEmitter.audioSource;
+        if (globalEmitter.audioSource.isPlaying)
+        {
+            globalEmitter.audioSource.Stop();
+        }
+        var clip = Resources.Load<AudioClip>("Audio/SFX/" + eventName);
+        if (clip != null)
+            globalEmitter.audioSource.clip = clip;
+        if (pitchFactor > 0)
+        {
+            globalEmitter.audioSource.pitch = 1 + (pitchFactor - 1)/10f;
+        }
+        globalEmitter.audioSource.Play();
 
     }
 

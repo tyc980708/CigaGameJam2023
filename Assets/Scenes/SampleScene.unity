@@ -494,45 +494,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Taint
       objectReference: {fileID: 0}
-    - target: {fileID: 8706207266647423013, guid: 8f6673ed1a4e9c14e83c8caa329a8300, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8706207266647423013, guid: 8f6673ed1a4e9c14e83c8caa329a8300, type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8706207266647423013, guid: 8f6673ed1a4e9c14e83c8caa329a8300, type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8706207266647423013, guid: 8f6673ed1a4e9c14e83c8caa329a8300, type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8706207266647423013, guid: 8f6673ed1a4e9c14e83c8caa329a8300, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 8706207266647423013, guid: 8f6673ed1a4e9c14e83c8caa329a8300, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8706207266647423013, guid: 8f6673ed1a4e9c14e83c8caa329a8300, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 9123321341071833028, guid: 8f6673ed1a4e9c14e83c8caa329a8300, type: 3}
       propertyPath: m_RootOrder
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 9123321341071833028, guid: 8f6673ed1a4e9c14e83c8caa329a8300, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9123321341071833028, guid: 8f6673ed1a4e9c14e83c8caa329a8300, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 9123321341071833028, guid: 8f6673ed1a4e9c14e83c8caa329a8300, type: 3}
       propertyPath: m_LocalPosition.x
@@ -634,7 +598,19 @@ PrefabInstance:
     - target: {fileID: 2456158209781516814, guid: bc0f9cdf5c3d0e449bf5829ae7e5c5cb, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -2346044687208593066, guid: 5c9244c293fb19348af9d891cd69ff7f, type: 3}
+      objectReference: {fileID: 8477600767596406765, guid: b2dc42c4c0a650e419588a27a71ea905, type: 3}
+    - target: {fileID: 2456158209781516814, guid: bc0f9cdf5c3d0e449bf5829ae7e5c5cb, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2456158209781516814, guid: bc0f9cdf5c3d0e449bf5829ae7e5c5cb, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2456158209781516814, guid: bc0f9cdf5c3d0e449bf5829ae7e5c5cb, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8526060843679919061, guid: bc0f9cdf5c3d0e449bf5829ae7e5c5cb, type: 3}
       propertyPath: m_Name
       value: Avatar

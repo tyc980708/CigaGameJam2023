@@ -41,3 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Avatar
+    uniqueID: 2316225381
+    locked: 0
+  - name: Eye
+    uniqueID: 467566639
+    locked: 0

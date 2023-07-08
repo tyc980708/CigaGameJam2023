@@ -10,6 +10,9 @@ public class JellyFish : BaseActor
     public int lightNum;
     public float durationPerLightNum;
     public float restDashDuration;
+    public float dashCD;
+    private float curDashCD;
+    private bool canRecoverDash;
     public Transform lightSphere;
 
     [HideInInspector]
@@ -24,6 +27,7 @@ public class JellyFish : BaseActor
 
         lightSphere = this.transform.Find("LightSphere");
         
+        restDashDuration = lightNum * durationPerLightNum;
         dashEvent.AddListener(Dash);
         exitDashEvent.AddListener(ExitDash);
     }
@@ -44,18 +48,33 @@ public class JellyFish : BaseActor
 
     public void DashControl()
     {
-        if (restDashDuration > 0f)
+        if (restDashDuration > 0f && isDashing)
         {
             restDashDuration -= Time.deltaTime;
         }
 
+        if (restDashDuration < lightNum * durationPerLightNum && !isDashing && canRecoverDash)
+        {
+            restDashDuration += Time.deltaTime;
+        }
+
+        if (curDashCD > 0)
+        {
+            curDashCD -= Time.deltaTime;
+            canRecoverDash = false;
+        }
+
         if (restDashDuration < 0f) 
         {
-            isDashing = false;
             exitDashEvent.Invoke();
-            restDashDuration = 0f;
         }
-        
+
+        if (curDashCD <= 0)
+        {
+            if (canRecoverDash) return;
+
+            canRecoverDash = true;
+        }
     }
 
     public void Dash()
@@ -63,8 +82,6 @@ public class JellyFish : BaseActor
         if (isDashing) return;
 
         isDashing = true;
-
-        restDashDuration = lightNum * durationPerLightNum;
 
         speed = speed * dashFactor;
         acceleration = acceleration * dashFactor;
@@ -76,9 +93,11 @@ public class JellyFish : BaseActor
 
         isDashing = false;
 
-        float restDashDuration = 0f;
+        restDashDuration = 0f;
 
         speed = speed / dashFactor;
         acceleration = acceleration / dashFactor;
+
+        curDashCD = dashCD;
     }
 }

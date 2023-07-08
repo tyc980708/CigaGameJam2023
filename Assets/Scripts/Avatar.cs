@@ -34,7 +34,7 @@ public class Avatar : JellyFish
         if (Input.GetKey(KeyCode.W)) 
         {
             if (curSpeed < speed) curSpeed += curAcceleration * Time.fixedDeltaTime;
-            if (curSpeed > speed) curSpeed = speed;
+            if (curSpeed > speed) curSpeed = Mathf.Lerp(curSpeed, speed, 1f * Time.fixedDeltaTime);
         }
         else
         {

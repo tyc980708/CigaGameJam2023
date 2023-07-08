@@ -115,24 +115,26 @@ public class JellyFish : BaseActor
     {
         dashDurationPercentage = restDashDuration / lightNum * durationPerLightNum;
 
-        if (dashDurationPercentage > 0.666)
-        {
-            
-        }
-        else if (dashDurationPercentage <= 0.666 && dashDurationPercentage > 0.333)
-        {
-            
-        }
-        else if (dashDurationPercentage <= 0.333 && dashDurationPercentage >= 0)
-        {
-
-        }
-
         if (isDashing)
         {
-            lightSpot_1.isDashing = true;
-            lightSpot_2.isDashing = true;
-            lightSpot_3.isDashing = true;
+            if (dashDurationPercentage > 0.666)
+            {
+                lightSpot_1.isDashing = true;
+                lightSpot_2.isDashing = true;
+                lightSpot_3.isDashing = true;
+            }
+            else if (dashDurationPercentage <= 0.666 && dashDurationPercentage > 0.333)
+            {
+                lightSpot_1.isDashing = true;
+                lightSpot_2.isDashing = true;
+                lightSpot_3.isDashing = false;
+            }
+            else if (dashDurationPercentage <= 0.333 && dashDurationPercentage >= 0)
+            {
+                lightSpot_1.isDashing = true;
+                lightSpot_2.isDashing = false;
+                lightSpot_3.isDashing = false;
+            }
         }
         else
         {
@@ -140,5 +142,6 @@ public class JellyFish : BaseActor
             lightSpot_2.isDashing = false;
             lightSpot_3.isDashing = false;
         }
+        
     }
 }

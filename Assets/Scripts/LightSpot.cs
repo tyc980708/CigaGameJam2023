@@ -8,12 +8,15 @@ public class LightSpot : MonoBehaviour
 {
 
     public bool isDashing;
+    public float restPercentage;
     public ParticleSystem particle;
 
     // Start is called before the first frame update
     public void Start()
     {
         particle = transform.Find("BubbleParticle").transform.GetComponent<ParticleSystem>();
+
+        restPercentage = 1f;
     }
 
     // Update is called once per frame

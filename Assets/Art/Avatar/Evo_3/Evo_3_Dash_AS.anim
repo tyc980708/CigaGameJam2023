@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Evo_2_Dash_BS
+  m_Name: Evo_3_Dash_AS
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,13 +21,11 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -855298285791758126, guid: 62830657b60123c4e940f81846322917, type: 3}
+      value: {fileID: 8923627894558887534, guid: ebbcaa32c6bd6f2479ad42241bdbb898, type: 3}
     - time: 0.083333336
-      value: {fileID: 6937817954938267909, guid: 407871f616a923a4fbd6489c55a95d07, type: 3}
+      value: {fileID: 7028616704906629411, guid: f3ac74a76e9d06a42b7cca598ec85fa9, type: 3}
     - time: 0.16666667
-      value: {fileID: -6470460504253458178, guid: 8410fdfe354b0b9409851012ccbeb51b, type: 3}
-    - time: 0.25
-      value: {fileID: -4178046375966092550, guid: 3233da892af41a94998c0211a7ef3b75, type: 3}
+      value: {fileID: 8288426215254106694, guid: 7ff9324ea108bc04c93e9d99333902f4, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -50,16 +48,15 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -855298285791758126, guid: 62830657b60123c4e940f81846322917, type: 3}
-    - {fileID: 6937817954938267909, guid: 407871f616a923a4fbd6489c55a95d07, type: 3}
-    - {fileID: -6470460504253458178, guid: 8410fdfe354b0b9409851012ccbeb51b, type: 3}
-    - {fileID: -4178046375966092550, guid: 3233da892af41a94998c0211a7ef3b75, type: 3}
+    - {fileID: 8923627894558887534, guid: ebbcaa32c6bd6f2479ad42241bdbb898, type: 3}
+    - {fileID: 7028616704906629411, guid: f3ac74a76e9d06a42b7cca598ec85fa9, type: 3}
+    - {fileID: 8288426215254106694, guid: 7ff9324ea108bc04c93e9d99333902f4, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.33333334
+    m_StopTime: 0.25
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -79,9 +76,9 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.25
+  - time: 0
     functionName: playAnimationSound
-    data: Avatar_Dash_Start
+    data: StopLoop
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

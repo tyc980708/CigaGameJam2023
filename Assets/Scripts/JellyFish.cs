@@ -11,6 +11,7 @@ public class JellyFish : BaseActor
     public int lightNum;
     public float sizePerLightNum;
     public float durationPerLightNum;
+    private float maxDashDuration;
     public float restDashDuration;
     public float dashDurationPercentage;
     public float dashCD;
@@ -39,7 +40,7 @@ public class JellyFish : BaseActor
 
         lightSphere = this.transform.Find("LightSphere");
         
-        restDashDuration = lightNum * durationPerLightNum;
+        restDashDuration = (lightNum + 3f * (evoLevel - 1f)) * durationPerLightNum;
         dashEvent.AddListener(Dash);
         exitDashEvent.AddListener(ExitDash);
     }
@@ -74,17 +75,19 @@ public class JellyFish : BaseActor
 
     public void DashControl()
     {
+        maxDashDuration = (lightNum + 3f * (evoLevel - 1f)) * durationPerLightNum;
+
         if (restDashDuration > 0f && isDashing)
         {
             restDashDuration -= Time.deltaTime;
         }
 
-        if (restDashDuration > lightNum * durationPerLightNum)
+        if (restDashDuration > maxDashDuration)
         {
             restDashDuration -= Time.deltaTime;
         }
 
-        if (restDashDuration < lightNum * durationPerLightNum && !isDashing && canRecoverDash)
+        if (restDashDuration < maxDashDuration && !isDashing && canRecoverDash)
         {
             restDashDuration += Time.deltaTime;
         }
@@ -132,7 +135,7 @@ public class JellyFish : BaseActor
 
     public void LightSpotControl()
     {
-        // Sync EvoLevel
+        // Sync evoLevel
         lightSpot_1.evoLevel = this.evoLevel;
         lightSpot_2.evoLevel = this.evoLevel;
         lightSpot_3.evoLevel = this.evoLevel;
@@ -144,8 +147,6 @@ public class JellyFish : BaseActor
 
 
         //  Dash Particle & LightSpot Size
-
-        float maxDashDuration = lightNum * durationPerLightNum;
         dashDurationPercentage = restDashDuration / maxDashDuration;
         if (lightNum == 1)
         {
@@ -251,6 +252,8 @@ public class JellyFish : BaseActor
 
     public void EvoControl()
     {
+        animator.SetInteger("evoLevel", (int)evoLevel);
+
         if (evoLevel >= 3f) return;
 
         if (lightNum > 3)

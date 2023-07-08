@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
+
 public class JellyFish : BaseActor
 {
     public int lightNum;
@@ -29,6 +30,7 @@ public class JellyFish : BaseActor
 
     public void LightSphereControl()
     {
-        lightSphere.localScale = curSize * Vector3.one;
+        // lightSphere.localScale = curSize * Vector3.one;
+        lightSphere.GetComponent<UnityEngine.Rendering.Universal.Light2D>().RadiusOuter = curSize;
     }
 }

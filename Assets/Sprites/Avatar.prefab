@@ -287,10 +287,12 @@ MonoBehaviour:
   curAcceleration: 0
   animator: {fileID: 0}
   rb: {fileID: 0}
+  evoLevel: 1
   lightNum: 1
   sizePerLightNum: 0.5
-  durationPerLightNum: 1
+  durationPerLightNum: 0.5
   restDashDuration: 0
+  dashDurationPercentage: 0
   dashCD: 2
   lightSphere: {fileID: 0}
   lightSpot_1: {fileID: 2068686849859013260}
@@ -526,11 +528,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3698279645804809538, guid: 5e81102cfa1bb594cbe802d82fdfd381, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.29
+      value: -0.164
       objectReference: {fileID: 0}
     - target: {fileID: 3698279645804809538, guid: 5e81102cfa1bb594cbe802d82fdfd381, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.12
+      value: 0.121
       objectReference: {fileID: 0}
     - target: {fileID: 3698279645804809538, guid: 5e81102cfa1bb594cbe802d82fdfd381, type: 3}
       propertyPath: m_LocalPosition.z
@@ -603,11 +605,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3698279645804809538, guid: 5e81102cfa1bb594cbe802d82fdfd381, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.26
+      value: 0.18
       objectReference: {fileID: 0}
     - target: {fileID: 3698279645804809538, guid: 5e81102cfa1bb594cbe802d82fdfd381, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.14
+      value: -0.036
       objectReference: {fileID: 0}
     - target: {fileID: 3698279645804809538, guid: 5e81102cfa1bb594cbe802d82fdfd381, type: 3}
       propertyPath: m_LocalPosition.z
@@ -684,7 +686,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3698279645804809538, guid: 5e81102cfa1bb594cbe802d82fdfd381, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.331
       objectReference: {fileID: 0}
     - target: {fileID: 3698279645804809538, guid: 5e81102cfa1bb594cbe802d82fdfd381, type: 3}
       propertyPath: m_LocalPosition.z

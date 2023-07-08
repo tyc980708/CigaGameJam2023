@@ -7,11 +7,12 @@ using UnityEngine.SceneManagement;
 
 public class JellyFish : BaseActor
 {
+    public float evoLevel = 1f;
     public int lightNum;
     public float sizePerLightNum;
     public float durationPerLightNum;
     public float restDashDuration;
-    private float dashDurationPercentage;
+    public float dashDurationPercentage;
     public float dashCD;
     private float curDashCD;
     private bool canRecoverDash;
@@ -103,8 +104,6 @@ public class JellyFish : BaseActor
 
         isDashing = false;
 
-        restDashDuration = 0f;
-
         speed = speed / dashFactor;
         acceleration = acceleration / dashFactor;
 
@@ -113,30 +112,70 @@ public class JellyFish : BaseActor
 
     public void LightSpotControl()
     {
-        dashDurationPercentage = restDashDuration / lightNum * durationPerLightNum;
+        // Sync EvoLevel
+        lightSpot_1.evoLevel = this.evoLevel;
+        lightSpot_2.evoLevel = this.evoLevel;
+        lightSpot_3.evoLevel = this.evoLevel;
 
-        if (isDashing)
+
+        //  Dash Particle & LightSpot Size
+
+        float maxDashDuration = lightNum * durationPerLightNum;
+        dashDurationPercentage = restDashDuration / maxDashDuration;
+        if (lightNum == 1)
         {
-            if (dashDurationPercentage > 0.666)
-            {
-                lightSpot_1.isDashing = true;
-                lightSpot_2.isDashing = true;
-                lightSpot_3.isDashing = true;
-            }
-            else if (dashDurationPercentage <= 0.666 && dashDurationPercentage > 0.333)
-            {
-                lightSpot_1.isDashing = true;
-                lightSpot_2.isDashing = true;
-                lightSpot_3.isDashing = false;
-            }
-            else if (dashDurationPercentage <= 0.333 && dashDurationPercentage >= 0)
+            lightSpot_1.gameObject.SetActive(true);
+            lightSpot_2.gameObject.SetActive(false);
+            lightSpot_3.gameObject.SetActive(false);
+
+            lightSpot_1.restPercentage = dashDurationPercentage;
+
+            if (isDashing) 
             {
                 lightSpot_1.isDashing = true;
                 lightSpot_2.isDashing = false;
                 lightSpot_3.isDashing = false;
             }
         }
-        else
+        else if (lightNum == 2)
+        {
+            lightSpot_1.gameObject.SetActive(true);
+            lightSpot_2.gameObject.SetActive(true);
+            lightSpot_3.gameObject.SetActive(false);
+
+            if (dashDurationPercentage >= 0.5)
+            {
+                lightSpot_1.restPercentage = (dashDurationPercentage - 0.5f) / 0.5f;
+                lightSpot_2.restPercentage = 1f;
+
+                if (isDashing) 
+                {
+                    lightSpot_1.isDashing = true;
+                    lightSpot_2.isDashing = true;
+                    lightSpot_3.isDashing = false;
+                }
+            }
+            else
+            {
+                lightSpot_1.restPercentage = 0f;
+                lightSpot_2.restPercentage = dashDurationPercentage / 0.5f;
+
+                if (isDashing) 
+                {
+                    lightSpot_1.isDashing = true;
+                    lightSpot_2.isDashing = false;
+                    lightSpot_3.isDashing = false;
+                }
+            }
+        }
+        else if (lightNum == 3)
+        {
+            lightSpot_1.gameObject.SetActive(true);
+            lightSpot_2.gameObject.SetActive(true);
+            lightSpot_3.gameObject.SetActive(true);
+        }
+
+        if (!isDashing)
         {
             lightSpot_1.isDashing = false;
             lightSpot_2.isDashing = false;

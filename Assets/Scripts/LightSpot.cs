@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class LightSpot : MonoBehaviour
 {
-
+    public float evoLevel;
     public bool isDashing;
     public float restPercentage;
     public ParticleSystem particle;
@@ -28,7 +28,7 @@ public class LightSpot : MonoBehaviour
 
     public void SizeControl()
     {
-        
+        transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one * (0.1f + 0.2f * restPercentage) * evoLevel, 1f);
     }
 
     public void ParticleControl()

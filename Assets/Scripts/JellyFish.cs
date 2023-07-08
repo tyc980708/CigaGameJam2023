@@ -43,7 +43,8 @@ public class JellyFish : BaseActor
 
     public void LightSphereControl()
     {
-        lightSphere.GetComponent<UnityEngine.Rendering.Universal.Light2D>().pointLightOuterRadius = curSize;
+        lightSphere.localScale = curSize * Vector3.one;
+        // lightSphere.GetComponent<UnityEngine.Rendering.Universal.Light2D>().pointLightOuterRadius = curSize;
     }
 
     public void DashControl()

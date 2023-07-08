@@ -195,4 +195,24 @@ public class JellyFish : BaseActor
             lightNum = 1;
         }
     }
+
+    /// <summary>
+    /// Sent when an incoming collider makes contact with this object's
+    /// collider (2D physics only).
+    /// </summary>
+    /// <param name="other">The Collision2D data associated with this collision.</param>
+    public void OnCollisionEnter2D(Collision2D other)
+    {
+        print(1);
+    }
+
+    /// <summary>
+    /// Sent when another object enters a trigger collider attached to this
+    /// object (2D physics only).
+    /// </summary>
+    /// <param name="other">The other Collider2D involved in this collision.</param>
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        print(2);
+    }
 }

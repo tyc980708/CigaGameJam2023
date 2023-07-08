@@ -62,6 +62,15 @@ public class BaseActor : MonoBehaviour
         {
             animator.SetBool("isMove", false);
         }
+
+        if (isDashing)
+        {
+            animator.SetBool("isDashing", true);
+        }
+        else
+        {
+            animator.SetBool("isDashing", false);
+        }
     }
 
     public void ParametersControl()

@@ -11,6 +11,8 @@ public class LightSpot : MonoBehaviour
     public float restPercentage;
     public ParticleSystem particle;
     public float touchedRecoverFactor;
+    public AnimationCurve tinkleCurve;
+    public float tinkleCursor = 1f;
 
     // Start is called before the first frame update
     public void Start()
@@ -20,6 +22,8 @@ public class LightSpot : MonoBehaviour
         particle = transform.Find("BubbleParticle").transform.GetComponent<ParticleSystem>();
 
         restPercentage = 1f;
+
+        tinkleCursor = 1f;
     }
 
     // Update is called once per frame
@@ -27,6 +31,7 @@ public class LightSpot : MonoBehaviour
     {
         SizeControl();
         ParticleControl();
+        TinkleControl();
     }
 
     public void SizeControl()
@@ -46,5 +51,20 @@ public class LightSpot : MonoBehaviour
         {
             em.rateOverTime = Random.Range(0.1f, 0.5f);
         }
+    }
+
+    public void TinkleControl()
+    {
+        if (tinkleCursor < 1f)
+        {
+            tinkleCursor += Time.deltaTime;
+        }
+
+        Color curColor = new Color(transform.GetComponent<SpriteRenderer>().color.r,
+                                    transform.GetComponent<SpriteRenderer>().color.g,
+                                    transform.GetComponent<SpriteRenderer>().color.b, 
+                                    200f/255f * tinkleCurve.Evaluate(tinkleCursor));
+
+        transform.GetComponent<SpriteRenderer>().color = curColor;
     }
 }

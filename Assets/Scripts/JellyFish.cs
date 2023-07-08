@@ -24,6 +24,7 @@ public class JellyFish : BaseActor
 
     public bool isHelped = false;
     public bool isInDanger = false;
+    public float touchedTimer;
     public float touchedRecoverFactor = 1f;
 
     [HideInInspector]
@@ -52,6 +53,7 @@ public class JellyFish : BaseActor
         DashControl();
         LightSpotControl();
         EvoControl();
+        HurtControl();
     }
 
     public void LightSphereControl()
@@ -258,6 +260,14 @@ public class JellyFish : BaseActor
         }
     }
 
+    public void HurtControl()
+    {
+        if (touchedTimer > 0f)
+        {
+            touchedTimer -= Time.deltaTime;
+        }
+    }
+
     /// <summary>
     /// Sent when an incoming collider makes contact with this object's
     /// collider (2D physics only).
@@ -289,6 +299,8 @@ public class JellyFish : BaseActor
 
         if (other.gameObject.tag == "Taint")
         {
+            if (touchedTimer > 0f) return;
+
             lightNum -= 1;
 
             // Protection
@@ -297,6 +309,12 @@ public class JellyFish : BaseActor
                 lightNum = 1;
                 touchedRecoverFactor = 0f;
             }
+
+            touchedTimer = 1f;
+
+            lightSpot_1.tinkleCursor = 0f;
+            lightSpot_2.tinkleCursor = 0f;
+            lightSpot_3.tinkleCursor = 0f;
         }
     }
 }

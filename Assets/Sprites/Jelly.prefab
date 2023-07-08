@@ -145,7 +145,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5825359027471752074}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -154,7 +154,7 @@ CircleCollider2D:
     m_Bits: 64
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -252,14 +252,18 @@ MonoBehaviour:
   lightSpot_3: {fileID: 9162490776497969734}
   isHelped: 0
   isInDanger: 0
-  touchedTimer: 0
+  hurtCDTimer: 0
+  hurtTimer: 0
+  isHurting: 0
   touchedRecoverFactor: 1
+  littenEnemies: []
   dashEvent:
     m_PersistentCalls:
       m_Calls: []
   exitDashEvent:
     m_PersistentCalls:
       m_Calls: []
+  helpedColor: {r: 0.827451, g: 1, b: 0.5411765, a: 0.78431374}
 --- !u!212 &2456158209781516814
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -302,7 +306,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2346044687208593066, guid: 5c9244c293fb19348af9d891cd69ff7f, type: 3}
-  m_Color: {r: 0.8222299, g: 0.8980392, b: 0.56078434, a: 0.5882353}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.15686275}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

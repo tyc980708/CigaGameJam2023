@@ -78,4 +78,9 @@ public class BaseActor : MonoBehaviour
         curSize = Mathf.Lerp(curSize, size, 2f * Time.deltaTime);
         curAcceleration = Mathf.Lerp(curAcceleration, acceleration, 5f * Time.deltaTime);
     }
+
+    public void DoCall()
+    {
+        
+    }
 }

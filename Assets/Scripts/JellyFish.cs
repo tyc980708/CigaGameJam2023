@@ -25,8 +25,12 @@ public class JellyFish : BaseActor
 
     public bool isHelped = false;
     public bool isInDanger = false;
-    public float touchedTimer;
+    public float hurtCDTimer;
+    public float hurtTimer;
+    public bool isHurting;
     public float touchedRecoverFactor = 1f;
+
+    public List<Enemy> littenEnemies;
 
     [HideInInspector]
     public UnityEvent dashEvent;
@@ -55,11 +59,12 @@ public class JellyFish : BaseActor
         LightSpotControl();
         EvoControl();
         HurtControl();
+        TaintLittingControl();
     }
 
     public void LightSphereControl()
     {
-        size = 0.5f + lightNum * sizePerLightNum * evoLevel * touchedRecoverFactor;
+        size = 0.5f + (lightNum + 3f * (evoLevel - 1f)) * touchedRecoverFactor;
 
         if (touchedRecoverFactor < 1f)
         {
@@ -265,9 +270,61 @@ public class JellyFish : BaseActor
 
     public void HurtControl()
     {
-        if (touchedTimer > 0f)
+        if (hurtCDTimer > 0f)
         {
-            touchedTimer -= Time.deltaTime;
+            hurtCDTimer -= Time.deltaTime;
+        }
+
+        if (isHurting && hurtTimer < -1f) hurtTimer = 0.35f;
+        if (!isHurting) hurtTimer = -2f;
+
+        if (hurtTimer > 0f)
+        {
+            hurtTimer -= Time.deltaTime;
+        }
+        else if (hurtTimer <= 0f && hurtTimer > -1f)
+        {
+            GetHurt();
+            hurtTimer = -2f;
+        }
+    }
+
+    public void GetHurt()
+    {
+        if (hurtCDTimer > 0f) return;
+
+            animator.SetTrigger("isTouched");
+
+            lightNum -= 1;
+
+            // Protection
+            if (lightNum < 1)
+            {
+                lightNum = 1;
+                touchedRecoverFactor = 0f;
+            }
+
+            hurtCDTimer = 1f;
+
+            lightSpot_1.tinkleCursor = 0f;
+            lightSpot_2.tinkleCursor = 0f;
+            lightSpot_3.tinkleCursor = 0f;
+    }
+
+    public void TaintLittingControl()
+    {
+        foreach (Enemy taint in littenEnemies)
+        {
+            float dist = Vector3.Distance(transform.position, taint.transform.position);
+
+            if ((dist + taint.size * 0.5f) < this.size * 1.5f + 0.5f)
+            {
+                taint.isLit = true;
+            }
+            else
+            {
+                taint.isLit = false;
+            }
         }
     }
 
@@ -295,7 +352,7 @@ public class JellyFish : BaseActor
 
             animator.SetTrigger("isTouched");
 
-            if (jelly.isHelped) return;
+            if (jelly.isHelped || jelly.evoLevel < evoLevel) return;
 
             lightNum += 1;
 
@@ -304,24 +361,25 @@ public class JellyFish : BaseActor
 
         if (other.gameObject.tag == "Taint")
         {
-            if (touchedTimer > 0f) return;
+            Enemy taint = other.transform.GetComponent<Enemy>();
 
-            animator.SetTrigger("isTouched");
+            if (!littenEnemies.Contains(taint)) littenEnemies.Add(taint);
 
-            lightNum -= 1;
+            if (!taint.jelliesLittingSelf.Contains(this)) taint.jelliesLittingSelf.Add(this);
+        }
+    }
 
-            // Protection
-            if (lightNum < 1)
-            {
-                lightNum = 1;
-                touchedRecoverFactor = 0f;
-            }
+    public void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Taint")
+        {
+            Enemy taint = other.transform.GetComponent<Enemy>();
 
-            touchedTimer = 1f;
+            if (littenEnemies.Contains(taint)) littenEnemies.Remove(taint);
 
-            lightSpot_1.tinkleCursor = 0f;
-            lightSpot_2.tinkleCursor = 0f;
-            lightSpot_3.tinkleCursor = 0f;
+            if (taint.jelliesLittingSelf.Contains(this)) taint.jelliesLittingSelf.Remove(this);
+
+            taint.isLit = false;
         }
     }
 }

@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 3512133520307228049}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.45, y: 1.18, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -50,7 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDashing: 0
   dashFactor: 0
-  size: 3
+  size: 1
   speed: 0
   acceleration: 0
   steerLerpRatio: 0
@@ -61,6 +61,10 @@ MonoBehaviour:
   animator: {fileID: 0}
   rb: {fileID: 0}
   level: 0
+  isLit: 0
+  hurtTimer: 0
+  cd: {fileID: 0}
+  jelliesLittingSelf: []
 --- !u!212 &8706207266647423013
 SpriteRenderer:
   m_ObjectHideFlags: 0

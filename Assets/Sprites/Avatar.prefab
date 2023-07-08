@@ -145,7 +145,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1097630601182788715}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -154,7 +154,7 @@ CircleCollider2D:
     m_Bits: 64
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -408,7 +408,9 @@ MonoBehaviour:
   lightSpot_3: {fileID: 4891104156466750655}
   isHelped: 0
   isInDanger: 0
-  touchedTimer: 0
+  hurtCDTimer: 0
+  hurtTimer: 0
+  isHurting: 0
   touchedRecoverFactor: 1
   dashEvent:
     m_PersistentCalls:

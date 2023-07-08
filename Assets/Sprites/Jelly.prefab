@@ -213,14 +213,16 @@ MonoBehaviour:
   lightSpot_1: {fileID: 1669431486408029827}
   lightSpot_2: {fileID: 1688272420020714923}
   lightSpot_3: {fileID: 9162490776497969734}
+  isHelped: 0
+  isInDanger: 0
+  touchedTimer: 0
+  touchedRecoverFactor: 1
   dashEvent:
     m_PersistentCalls:
       m_Calls: []
   exitDashEvent:
     m_PersistentCalls:
       m_Calls: []
-  isHelped: 0
-  isInDanger: 0
 --- !u!212 &2456158209781516814
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -283,7 +285,7 @@ Animator:
   m_GameObject: {fileID: 8526060843679919061}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1e6539fe143c7f844b3cf4c1fcd825ce, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

@@ -290,6 +290,8 @@ public class JellyFish : BaseActor
         {
             JellyFish jelly = other.transform.GetComponent<JellyFish>();
 
+            animator.SetTrigger("isTouched");
+
             if (jelly.isHelped) return;
 
             lightNum += 1;
@@ -300,6 +302,8 @@ public class JellyFish : BaseActor
         if (other.gameObject.tag == "Taint")
         {
             if (touchedTimer > 0f) return;
+
+            animator.SetTrigger("isTouched");
 
             lightNum -= 1;
 

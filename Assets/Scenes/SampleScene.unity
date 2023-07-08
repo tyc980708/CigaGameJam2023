@@ -158,7 +158,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.18569775, g: 0.28024244, b: 0.3679245, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -329,7 +329,7 @@ MonoBehaviour:
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
   m_AlphaBlendOnOverlap: 0
-  m_OverlapOperation: 0
+  m_OverlapOperation: 1
   m_NormalMapDistance: 3
   m_NormalMapQuality: 2
   m_UseNormalMap: 0
@@ -495,6 +495,10 @@ PrefabInstance:
       value: Taint
       objectReference: {fileID: 0}
     - target: {fileID: 8706207266647423013, guid: 8f6673ed1a4e9c14e83c8caa329a8300, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8706207266647423013, guid: 8f6673ed1a4e9c14e83c8caa329a8300, type: 3}
       propertyPath: m_Color.b
       value: 0
       objectReference: {fileID: 0}
@@ -506,17 +510,37 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8706207266647423013, guid: 8f6673ed1a4e9c14e83c8caa329a8300, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8706207266647423013, guid: 8f6673ed1a4e9c14e83c8caa329a8300, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8706207266647423013, guid: 8f6673ed1a4e9c14e83c8caa329a8300, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 9123321341071833028, guid: 8f6673ed1a4e9c14e83c8caa329a8300, type: 3}
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9123321341071833028, guid: 8f6673ed1a4e9c14e83c8caa329a8300, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9123321341071833028, guid: 8f6673ed1a4e9c14e83c8caa329a8300, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9123321341071833028, guid: 8f6673ed1a4e9c14e83c8caa329a8300, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.85
+      value: -3.7
       objectReference: {fileID: 0}
     - target: {fileID: 9123321341071833028, guid: 8f6673ed1a4e9c14e83c8caa329a8300, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.25
+      value: -0.34
       objectReference: {fileID: 0}
     - target: {fileID: 9123321341071833028, guid: 8f6673ed1a4e9c14e83c8caa329a8300, type: 3}
       propertyPath: m_LocalPosition.z
@@ -623,6 +647,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+    - target: {fileID: 2784733376397293366, guid: bc0f9cdf5c3d0e449bf5829ae7e5c5cb, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8526060843679919061, guid: bc0f9cdf5c3d0e449bf5829ae7e5c5cb, type: 3}
       propertyPath: m_Name
       value: Avatar

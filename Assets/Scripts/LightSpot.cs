@@ -10,10 +10,13 @@ public class LightSpot : MonoBehaviour
     public bool isDashing;
     public float restPercentage;
     public ParticleSystem particle;
+    public float touchedRecoverFactor;
 
     // Start is called before the first frame update
     public void Start()
     {
+        transform.localScale = Vector3.zero;
+
         particle = transform.Find("BubbleParticle").transform.GetComponent<ParticleSystem>();
 
         restPercentage = 1f;
@@ -28,7 +31,7 @@ public class LightSpot : MonoBehaviour
 
     public void SizeControl()
     {
-        transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one * (0.1f + 0.2f * restPercentage) * evoLevel, 1f);
+        transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one * (0.1f + 0.2f * restPercentage) * evoLevel, 4f * Time.deltaTime);
     }
 
     public void ParticleControl()

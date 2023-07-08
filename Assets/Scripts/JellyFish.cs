@@ -22,6 +22,10 @@ public class JellyFish : BaseActor
     public LightSpot lightSpot_2;
     public LightSpot lightSpot_3;
 
+    public bool isHelped = false;
+    public bool isInDanger = false;
+    public float touchedRecoverFactor = 1f;
+
     [HideInInspector]
     public UnityEvent dashEvent;
     [HideInInspector]
@@ -52,7 +56,15 @@ public class JellyFish : BaseActor
 
     public void LightSphereControl()
     {
-        size = 1 + (lightNum-1) * sizePerLightNum;
+        size = 0.5f + lightNum * sizePerLightNum * evoLevel * touchedRecoverFactor;
+
+        if (touchedRecoverFactor < 1f)
+        {
+            touchedRecoverFactor += 1f * Time.deltaTime;
+        }
+
+        if (touchedRecoverFactor > 1f) touchedRecoverFactor = 1f;
+
 
         lightSphere.localScale = curSize * Vector3.one;
         // lightSphere.GetComponent<UnityEngine.Rendering.Universal.Light2D>().pointLightOuterRadius = curSize;
@@ -61,6 +73,11 @@ public class JellyFish : BaseActor
     public void DashControl()
     {
         if (restDashDuration > 0f && isDashing)
+        {
+            restDashDuration -= Time.deltaTime;
+        }
+
+        if (restDashDuration > lightNum * durationPerLightNum)
         {
             restDashDuration -= Time.deltaTime;
         }
@@ -118,6 +135,11 @@ public class JellyFish : BaseActor
         lightSpot_2.evoLevel = this.evoLevel;
         lightSpot_3.evoLevel = this.evoLevel;
 
+        // Sync touchedRecoverFactor
+        lightSpot_1.touchedRecoverFactor = touchedRecoverFactor;
+        lightSpot_2.touchedRecoverFactor = touchedRecoverFactor;
+        lightSpot_3.touchedRecoverFactor = touchedRecoverFactor;
+
 
         //  Dash Particle & LightSpot Size
 
@@ -174,6 +196,46 @@ public class JellyFish : BaseActor
             lightSpot_1.gameObject.SetActive(true);
             lightSpot_2.gameObject.SetActive(true);
             lightSpot_3.gameObject.SetActive(true);
+
+            if (dashDurationPercentage >= 0.666)
+            {
+                lightSpot_1.restPercentage = (dashDurationPercentage - 0.666f) / 0.333f;
+                lightSpot_2.restPercentage = 1f;
+                lightSpot_3.restPercentage = 1f;
+
+                if (isDashing) 
+                {
+                    lightSpot_1.isDashing = true;
+                    lightSpot_2.isDashing = true;
+                    lightSpot_3.isDashing = true;
+                }
+            }
+            else if (dashDurationPercentage >= 0.333 && dashDurationPercentage < 0.666)
+            {
+                lightSpot_1.restPercentage = 0f;
+                lightSpot_2.restPercentage = (dashDurationPercentage - 0.333f) / 0.333f;
+                lightSpot_3.restPercentage = 1f;
+
+                if (isDashing) 
+                {
+                    lightSpot_1.isDashing = true;
+                    lightSpot_2.isDashing = true;
+                    lightSpot_3.isDashing = false;
+                }
+            }
+            else
+            {
+                lightSpot_1.restPercentage = 0f;
+                lightSpot_2.restPercentage = 0f;
+                lightSpot_3.restPercentage = dashDurationPercentage / 0.333f;
+
+                if (isDashing) 
+                {
+                    lightSpot_1.isDashing = true;
+                    lightSpot_2.isDashing = false;
+                    lightSpot_3.isDashing = false;
+                }
+            }
         }
 
         if (!isDashing)
@@ -189,7 +251,7 @@ public class JellyFish : BaseActor
     {
         if (evoLevel >= 3f) return;
 
-        if (lightNum > 2)
+        if (lightNum > 3)
         {
             evoLevel += 1f;
             lightNum = 1;
@@ -203,7 +265,7 @@ public class JellyFish : BaseActor
     /// <param name="other">The Collision2D data associated with this collision.</param>
     public void OnCollisionEnter2D(Collision2D other)
     {
-        print(1);
+        // print(1);
     }
 
     /// <summary>
@@ -213,6 +275,28 @@ public class JellyFish : BaseActor
     /// <param name="other">The other Collider2D involved in this collision.</param>
     public void OnTriggerEnter2D(Collider2D other)
     {
-        print(2);
+        // print(2);
+        if (other.gameObject.tag == "Jelly")
+        {
+            JellyFish jelly = other.transform.GetComponent<JellyFish>();
+
+            if (jelly.isHelped) return;
+
+            lightNum += 1;
+
+            jelly.isHelped = true;
+        }
+
+        if (other.gameObject.tag == "Taint")
+        {
+            lightNum -= 1;
+
+            // Protection
+            if (lightNum < 1)
+            {
+                lightNum = 1;
+                touchedRecoverFactor = 0f;
+            }
+        }
     }
 }

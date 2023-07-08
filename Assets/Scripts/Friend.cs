@@ -6,10 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Friend : JellyFish
 {
-    public bool isHelped = false;
-    public bool isInDanger = false;
-
-
+    
     // Start is called before the first frame update
     public void Start()
     {

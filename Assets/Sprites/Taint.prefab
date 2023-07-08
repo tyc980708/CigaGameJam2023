@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 9179177212950593591}
   m_Layer: 0
   m_Name: Taint
-  m_TagString: Untagged
+  m_TagString: Taint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -147,7 +147,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Radius: 0.45
 --- !u!50 &9179177212950593591
 Rigidbody2D:
   serializedVersion: 4

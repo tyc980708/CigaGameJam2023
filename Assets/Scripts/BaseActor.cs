@@ -30,6 +30,13 @@ public class BaseActor : MonoBehaviour
 
     public Rigidbody2D rb;
 
+    [Header("AI")]
+    public bool isAvatar;
+    public bool isEnemy;
+
+    public float thinkInterval;
+    private float thinkTimer;
+
     // Start is called before the first frame update
     public void Start()
     {
@@ -42,6 +49,8 @@ public class BaseActor : MonoBehaviour
     public void Update()
     {
         ParametersControl();
+
+        AI();
     }
 
     public void DoMove(Vector2 position)
@@ -89,5 +98,28 @@ public class BaseActor : MonoBehaviour
     public void DoCall()
     {
         wave.isCalled = true;
+    }
+
+    public void AI()
+    {
+        if (isAvatar) return;
+
+        if (isEnemy) return;
+
+        if (isFriend)
+        {
+            if (thinkTimer < thinkInterval)
+            {
+                thinkTimer += Time.deltaTime;
+            }
+            else
+            {
+                
+            }
+
+
+        }
+
+
     }
 }

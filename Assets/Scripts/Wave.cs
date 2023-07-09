@@ -16,6 +16,7 @@ public class Wave : MonoBehaviour
     public bool isEnemy;
     public bool isFriend;
     public bool isAvatar;
+    private bool keepYourself;
 
     public BaseActor owner;
     public List<BaseActor> hearedList;
@@ -99,18 +100,18 @@ public class Wave : MonoBehaviour
                 maxDistance = 10f;
             }
 
-            if (evoLevel == 1) 
-                {
-                    curSize = 1.3f;
-                }
-                else if (evoLevel == 2) 
-                {
-                    curSize = 1.7f;
-                }
-                else if (evoLevel == 3) 
-                {
-                    curSize = 2.3f;
-                }
+            if (evoLevel <= 1) 
+            {
+                curSize = 1.3f;
+            }
+            else if (evoLevel == 2) 
+            {
+                curSize = 1.7f;
+            }
+            else if (evoLevel == 3) 
+            {
+                curSize = 2.3f;
+            }
         }
 
         if (isEnemy)
@@ -140,9 +141,10 @@ public class Wave : MonoBehaviour
 
             if (someone.gameObject.tag == "Jelly")
             {
-                if (isAvatar && someone_s_wave.isFriend)
+                if (isAvatar && someone_s_wave.isFriend && isCalled && !someone_s_wave.isCalled)
                 {
                     someone.DoCall();
+                    print(owner.gameObject.name);
                 }
             }
         }

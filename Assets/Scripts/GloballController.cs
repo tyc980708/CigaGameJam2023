@@ -142,7 +142,7 @@ public class GlobalController : MonoBehaviour
                 else if (rd3 >= 4) return 2;
                 else return 1;
         }
-        return 0;
+        return 1;
     }
     private Vector3 RandPos()
     {

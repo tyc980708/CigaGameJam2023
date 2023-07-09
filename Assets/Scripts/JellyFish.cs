@@ -294,7 +294,7 @@ public class JellyFish : BaseActor
 
             animator.SetTrigger("isTouched");
 
-            //AudioManager.PlaySound("Avatar_Hurt");
+            AudioManager.PlaySound("Avatar_Hurt");
 
             lightNum -= 1;
 

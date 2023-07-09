@@ -44,10 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25402f7cb90452f48831020dfd8aa952, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  center: {fileID: 0}
+  center: {fileID: 1036439576205827044, guid: bc0f9cdf5c3d0e449bf5829ae7e5c5cb, type: 3}
   avatarLevel: 0
   enemy: {fileID: 3512133520307228049, guid: 8f6673ed1a4e9c14e83c8caa329a8300, type: 3}
-  friend: {fileID: 0}
+  friend: {fileID: 8526060843679919061, guid: 9ad8b622314ceb94b820fa4ff87f541d, type: 3}
   enemyNum: 30
   friendNum: 5
   activeRange: 50

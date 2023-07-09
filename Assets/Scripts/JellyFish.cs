@@ -30,6 +30,9 @@ public class JellyFish : BaseActor
     public float touchedRecoverFactor = 1f;
 
     public List<Enemy> littenEnemies;
+    public List<JellyFish> helpedJellies;
+
+    public Transform colliders;
 
     [HideInInspector]
     public UnityEvent dashEvent;
@@ -46,12 +49,27 @@ public class JellyFish : BaseActor
         restDashDuration = (lightNum + 3f * (evoLevel - 1f)) * durationPerLightNum;
         dashEvent.AddListener(Dash);
         exitDashEvent.AddListener(ExitDash);
+
+        colliders = transform.Find("Colliders");
     }
 
     // Update is called once per frame
     public void Update()
     {
         base.Update();
+
+        if (evoLevel == 1)
+        {
+            colliders.localScale = Vector3.one * 1f;
+        }
+        else if (evoLevel == 2)
+        {
+            colliders.localScale = Vector3.one * 1.5f;
+        }
+        else if (evoLevel == 3)
+        {
+            colliders.localScale = Vector3.one * 3.75f;
+        }
 
         LightSphereControl();
         DashControl();
@@ -352,13 +370,15 @@ public class JellyFish : BaseActor
     /// <param name="other">The other Collider2D involved in this collision.</param>
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Jelly")
+        Transform theOther = other.transform.parent;
+
+        if (theOther.gameObject.tag == "Jelly")
         {
-            JellyFish jelly = other.transform.GetComponent<JellyFish>();
+            JellyFish jelly = theOther.GetComponent<JellyFish>();
 
             animator.SetTrigger("isTouched");
 
-            if (jelly.isHelped || jelly.evoLevel < evoLevel) return;
+            if ( helpedJellies.Contains(jelly) || jelly.evoLevel < evoLevel) return;
 
             AudioManager.PlaySound("Guangdian_Merge_03", lightNum);
 
@@ -366,12 +386,14 @@ public class JellyFish : BaseActor
 
             lightNum += 1;
 
-            jelly.isHelped = true;
+            helpedJellies.Add(jelly);
+
+            if (isAvatar) jelly.isHelped = true;
         }
 
-        if (other.gameObject.tag == "Taint")
+        if (theOther.gameObject.tag == "Taint")
         {
-            Enemy taint = other.transform.GetComponent<Enemy>();
+            Enemy taint = theOther.GetComponent<Enemy>();
 
             if (!littenEnemies.Contains(taint)) littenEnemies.Add(taint);
 
@@ -381,9 +403,11 @@ public class JellyFish : BaseActor
 
     public void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Taint")
+        Transform theOther = other.transform.parent;
+
+        if (theOther.gameObject.tag == "Taint")
         {
-            Enemy taint = other.transform.GetComponent<Enemy>();
+            Enemy taint = theOther.GetComponent<Enemy>();
 
             if (littenEnemies.Contains(taint)) littenEnemies.Remove(taint);
 

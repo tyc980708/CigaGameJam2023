@@ -48,9 +48,9 @@ MonoBehaviour:
   avatarLevel: 1
   enemy: {fileID: 3512133520307228049, guid: 8f6673ed1a4e9c14e83c8caa329a8300, type: 3}
   friend: {fileID: 8526060843679919061, guid: 9ad8b622314ceb94b820fa4ff87f541d, type: 3}
-  enemyNum: 30
+  enemyNum: 200
   friendNum: 5
-  activeRange: 50
+  activeRange: 100
   protectionRange: 15
-  evo3Range: 30
+  evo3Range: 150
   cast: {fileID: 0}

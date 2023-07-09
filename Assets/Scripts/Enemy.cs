@@ -86,9 +86,11 @@ public class Enemy : BaseActor
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Jelly")
+        Transform theOther = other.transform.parent;
+
+        if (theOther.gameObject.tag == "Jelly")
         {
-            JellyFish jelly = other.transform.GetComponent<JellyFish>();
+            JellyFish jelly = theOther.GetComponent<JellyFish>();
 
             jelly.isHurting = true;
             jelly.focusedTarget = this;
@@ -102,9 +104,11 @@ public class Enemy : BaseActor
 
     public void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Jelly")
+        Transform theOther = other.transform.parent;
+
+        if (theOther.gameObject.tag == "Jelly")
         {
-            JellyFish jelly = other.transform.GetComponent<JellyFish>();
+            JellyFish jelly = theOther.GetComponent<JellyFish>();
 
             jelly.isHurting = false;
 

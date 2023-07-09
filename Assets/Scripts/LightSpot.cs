@@ -14,6 +14,8 @@ public class LightSpot : MonoBehaviour
     public AnimationCurve tinkleCurve;
     public float tinkleCursor = 1f;
 
+    private Vector3 localPos;
+
     // Start is called before the first frame update
     public void Start()
     {
@@ -24,6 +26,8 @@ public class LightSpot : MonoBehaviour
         restPercentage = 1f;
 
         tinkleCursor = 1f;
+
+        localPos = transform.localPosition;
     }
 
     // Update is called once per frame
@@ -37,6 +41,19 @@ public class LightSpot : MonoBehaviour
     public void SizeControl()
     {
         transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one * (0.1f + 0.2f * restPercentage) * (evoLevel), 4f * Time.deltaTime);
+
+        if (evoLevel == 1f)
+        {
+            transform.localPosition = localPos * 1f;
+        }
+        else if (evoLevel == 2f)
+        {
+            transform.localPosition = localPos * 2f;
+        }
+        else if (evoLevel == 3f)
+        {
+            transform.localPosition = localPos * 3f;
+        }
     }
 
     public void ParticleControl()

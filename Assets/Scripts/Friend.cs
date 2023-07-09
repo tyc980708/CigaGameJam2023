@@ -13,6 +13,10 @@ public class Friend : JellyFish
     public Vector3 targetDirection;
 
     public bool isMove;
+
+    public BaseActor avatar;
+    public bool isCompanion;
+    private BaseActor evo3;
     
     // Start is called before the first frame update
     public void Start()
@@ -25,6 +29,14 @@ public class Friend : JellyFish
         }
 
         originalColor = lightSphere.GetComponent<SpriteRenderer>().color;
+
+        avatar = GameObject.Find("Avatar").GetComponent<BaseActor>();
+
+        if (focusedTarget && focusedTarget.gameObject.tag == "Jelly" && focusedTarget.evoLevel == 3f)
+        {
+            isCompanion = true;
+            evo3 = focusedTarget;
+        }
     }
 
     // Update is called once per frame
@@ -51,6 +63,15 @@ public class Friend : JellyFish
 
     public void AI()
     {
+        if (isCompanion)
+        {
+            if (state != 1) 
+            {
+                state = 2;
+                focusedTarget = evo3;
+            }
+        }
+
         if (thinkTimer < thinkInterval)
         {
             thinkTimer += Time.deltaTime;
@@ -84,6 +105,8 @@ public class Friend : JellyFish
             }
             else if (state == 2)
             {
+                if (focusedTarget == null) state = 0;
+
                 targetDirection = (focusedTarget.transform.position - transform.position).normalized;
 
                 isMove = true;
@@ -94,6 +117,11 @@ public class Friend : JellyFish
                     if (dice > 3) dashEvent.Invoke();
                 }
                 else exitDashEvent.Invoke();
+            }
+
+            if (avatar && Vector3.Distance(transform.position, avatar.transform.position) < 3f && state != 1)
+            {
+                focusedTarget = avatar.transform.GetComponent<BaseActor>();
             }
 
             if (focusedTarget && focusedTarget.gameObject.tag == "Jelly")
@@ -107,7 +135,16 @@ public class Friend : JellyFish
                 {
                     state = 0;
                 }
+
+                dice = Random.Range(0f, 6f);
+                if (dice > 4f)
+                {
+                    focusedTarget = null;
+                    state = 0;
+                }
             }
+
+            
         }
 
         if (isMove) 

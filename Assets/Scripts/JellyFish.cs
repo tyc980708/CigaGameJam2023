@@ -383,7 +383,7 @@ public class JellyFish : BaseActor
 
             if ( helpedJellies.Contains(jelly)) return;
 
-            if (jelly.evoLevel >= evoLevel)
+            if (jelly.evoLevel >= evoLevel && evoLevel != 3)
             {
                 if (isAvatar)
                 {

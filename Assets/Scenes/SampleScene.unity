@@ -682,6 +682,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1036439576205827044, guid: bc0f9cdf5c3d0e449bf5829ae7e5c5cb, type: 3}
   m_PrefabInstance: {fileID: 4067463707597121481}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1834727416 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1371741539728635799, guid: bc0f9cdf5c3d0e449bf5829ae7e5c5cb, type: 3}
+  m_PrefabInstance: {fileID: 4067463707597121481}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d27259f83546074bb43e070cfcb2fc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2095435444
 GameObject:
   m_ObjectHideFlags: 0
@@ -863,10 +874,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8007570579379687553, guid: bc0f9cdf5c3d0e449bf5829ae7e5c5cb, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: e63e423506e34c046b9668fefe991010, type: 2}
     - target: {fileID: 8526060843679919061, guid: bc0f9cdf5c3d0e449bf5829ae7e5c5cb, type: 3}
       propertyPath: m_Name
       value: Avatar
@@ -993,6 +1000,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8067456101313417576, guid: 9ad8b622314ceb94b820fa4ff87f541d, type: 3}
+      propertyPath: avatar
+      value: 
+      objectReference: {fileID: 1834727416}
     - target: {fileID: 8526060843679919061, guid: 9ad8b622314ceb94b820fa4ff87f541d, type: 3}
       propertyPath: m_Name
       value: Jelly

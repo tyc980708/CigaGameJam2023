@@ -157,6 +157,10 @@ public class Wave : MonoBehaviour
                 if (isAvatar && someone_s_wave.isFriend && isCalled && !someone_s_wave.isCalled)
                 {
                     someone.DoCall();
+                    if (Vector3.Distance(someone.transform.position, transform.position) < 20f && someone.state != 1)
+                    {
+                        someone.focusedTarget = this.transform.parent.GetComponent<BaseActor>();
+                    }
                 }
             }
         }

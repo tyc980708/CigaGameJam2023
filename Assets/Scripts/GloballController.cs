@@ -151,22 +151,23 @@ public class GlobalController : MonoBehaviour
 
         for (int i = 0; i <= 4; i++)
         {
-            bool generate = Random.Range(1, 3) != 1;
+            bool generate = Random.Range(1, 2) != 1;
             if (generate)
             {
                 Vector3 subpos = RandPos(3f, 10f, pos);
                 Vector3 subrot = new Vector3(0f, 0f, Random.Range(0f, 360f));
-                AccompanyGenerator(friend, subpos, subrot);
+                AccompanyGenerator(friend, subpos, subrot, go.GetComponent<BaseActor>());
             }
         }
 
         return go;
     }
-    public GameObject AccompanyGenerator(GameObject obj, Vector3 pos, Vector3 rotation)
+    public GameObject AccompanyGenerator(GameObject obj, Vector3 pos, Vector3 rotation, BaseActor focus)
     {
         var go = Object.Instantiate(obj, pos, Quaternion.Euler(rotation.x, rotation.y, rotation.z));
         go.GetComponent<Friend>().evoLevel = RandEvoLevel();
         go.GetComponent<Friend>().isHelped = false;
+        go.GetComponent<Friend>().focusedTarget = focus;
         return go;
     }
 

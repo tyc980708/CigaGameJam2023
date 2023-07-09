@@ -536,7 +536,7 @@ MonoBehaviour:
   state: 0
   focusedTarget: {fileID: 0}
   lightNum: 1
-  sizePerLightNum: 0.5
+  sizePerLightNum: 0.75
   durationPerLightNum: 0.5
   restDashDuration: 0
   dashDurationPercentage: 0
@@ -561,8 +561,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   helpedColor: {r: 0.827451, g: 1, b: 0.5411765, a: 0.78431374}
+  originalColor: {r: 0, g: 0, b: 0, a: 0}
   targetDirection: {x: 0, y: 0, z: 0}
   isMove: 0
+  avatar: {fileID: 0}
+  isCompanion: 0
 --- !u!212 &2456158209781516814
 SpriteRenderer:
   m_ObjectHideFlags: 0

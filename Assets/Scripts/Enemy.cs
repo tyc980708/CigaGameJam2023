@@ -13,6 +13,7 @@ public class Enemy : BaseActor
     public Collider2D cd;
 
     public List<JellyFish> jelliesLittingSelf;
+    public List<JellyFish> jelliesBeingHurting;
 
 
     // Start is called before the first frame update
@@ -34,6 +35,7 @@ public class Enemy : BaseActor
 
         SizeControl();
         LitControl();
+        AnimatorControl();
     }
 
     public void SizeControl()
@@ -55,11 +57,32 @@ public class Enemy : BaseActor
 
         }
 
-        if (size < 0.01f) Destroy(this.gameObject);
+        if (size < 0.001f) Destroy(this.gameObject);
 
         
     }
 
+    public void AnimatorControl()
+    {
+        if (jelliesBeingHurting.Count > 0)
+        {
+            animator.SetBool("isCrazy", true);
+        }
+        else
+        {
+            animator.SetBool("isCrazy", false);
+        }
+
+        if (isLit)
+        {
+            animator.SetBool("isLit", true);
+        }
+        else
+        {
+            animator.SetBool("isLit", false);
+        }
+        
+    }
 
     public void OnTriggerEnter2D(Collider2D other)
     {
@@ -68,6 +91,11 @@ public class Enemy : BaseActor
             JellyFish jelly = other.transform.GetComponent<JellyFish>();
 
             jelly.isHurting = true;
+
+            if (!jelliesBeingHurting.Contains(jelly))
+            {
+                jelliesBeingHurting.Add(jelly);
+            }
         }
     }
 
@@ -78,6 +106,11 @@ public class Enemy : BaseActor
             JellyFish jelly = other.transform.GetComponent<JellyFish>();
 
             jelly.isHurting = false;
+
+            if (jelliesBeingHurting.Contains(jelly))
+            {
+                jelliesBeingHurting.Remove(jelly);
+            }
         }
     }
 }

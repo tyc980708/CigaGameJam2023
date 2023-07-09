@@ -274,7 +274,7 @@ public class JellyFish : BaseActor
             hurtCDTimer -= Time.deltaTime;
         }
 
-        if (isHurting && hurtTimer < -1f) hurtTimer = 0.35f;
+        if (isHurting && hurtTimer < -1f) hurtTimer = 0.25f;
         if (!isHurting) hurtTimer = -2f;
 
         if (hurtTimer > 0f)
@@ -334,7 +334,7 @@ public class JellyFish : BaseActor
     /// <param name="other">The Collision2D data associated with this collision.</param>
     public void OnCollisionEnter2D(Collision2D other)
     {
-        // print(1);
+
     }
 
     /// <summary>
@@ -344,7 +344,6 @@ public class JellyFish : BaseActor
     /// <param name="other">The other Collider2D involved in this collision.</param>
     public void OnTriggerEnter2D(Collider2D other)
     {
-        // print(2);
         if (other.gameObject.tag == "Jelly")
         {
             JellyFish jelly = other.transform.GetComponent<JellyFish>();

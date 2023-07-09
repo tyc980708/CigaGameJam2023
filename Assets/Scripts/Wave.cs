@@ -40,6 +40,12 @@ public class Wave : MonoBehaviour
     {
         AlphaControl();
 
+        if (isFriend && owner.transform.GetComponent<JellyFish>().isHelped)
+        {
+            waveSpeed = 5f;
+            maxDistance = 10f;
+        }
+
         transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one * curSize, 2f * Time.deltaTime);
 
         if (isInCD) 
@@ -100,12 +106,6 @@ public class Wave : MonoBehaviour
 
         if (isFriend)
         {
-            if (owner.transform.GetComponent<JellyFish>().isHelped)
-            {
-                waveSpeed = 5f;
-                maxDistance = 10f;
-            }
-
             if (evoLevel <= 1) 
             {
                 curSize = 1.3f;

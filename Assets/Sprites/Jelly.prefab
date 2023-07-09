@@ -105,6 +105,7 @@ MonoBehaviour:
   evoLevel: 0
   callCD: 0
   isInCD: 0
+  isAudioPlayed: 0
   isEnemy: 0
   isFriend: 1
   isAvatar: 0
@@ -421,6 +422,12 @@ MonoBehaviour:
   curAcceleration: 0
   animator: {fileID: 0}
   rb: {fileID: 0}
+  isAvatar: 0
+  isEnemy: 0
+  isFriend: 1
+  thinkInterval: 0
+  state: 0
+  focusedTarget: {fileID: 0}
   lightNum: 1
   sizePerLightNum: 0.5
   durationPerLightNum: 0.5

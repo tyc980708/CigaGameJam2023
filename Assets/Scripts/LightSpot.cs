@@ -36,7 +36,7 @@ public class LightSpot : MonoBehaviour
 
     public void SizeControl()
     {
-        transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one * (0.1f + 0.2f * restPercentage) * (1f + evoLevel), 4f * Time.deltaTime);
+        transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one * (0.1f + 0.2f * restPercentage) * (evoLevel), 4f * Time.deltaTime);
     }
 
     public void ParticleControl()

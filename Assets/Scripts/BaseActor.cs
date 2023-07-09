@@ -33,9 +33,13 @@ public class BaseActor : MonoBehaviour
     [Header("AI")]
     public bool isAvatar;
     public bool isEnemy;
+    public bool isFriend;
 
-    public float thinkInterval;
+    public float thinkInterval = 2f;
     private float thinkTimer;
+
+    public int state; // 0 - Idle; 1 - inDanger; 2 - Follow
+    public BaseActor focusedTarget;
 
     // Start is called before the first frame update
     public void Start()
@@ -102,6 +106,8 @@ public class BaseActor : MonoBehaviour
 
     public void AI()
     {
+        state = 0;
+
         if (isAvatar) return;
 
         if (isEnemy) return;
@@ -114,7 +120,7 @@ public class BaseActor : MonoBehaviour
             }
             else
             {
-                
+                thinkTimer = 0f;
             }
 
 

@@ -64,6 +64,12 @@ MonoBehaviour:
   curAcceleration: 0
   animator: {fileID: 0}
   rb: {fileID: 0}
+  isAvatar: 0
+  isEnemy: 1
+  isFriend: 0
+  thinkInterval: 0
+  state: 0
+  focusedTarget: {fileID: 0}
   level: 0
   isLit: 0
   hurtTimer: 0
@@ -348,6 +354,7 @@ MonoBehaviour:
   evoLevel: 0
   callCD: 0
   isInCD: 0
+  isAudioPlayed: 0
   isEnemy: 1
   isFriend: 0
   isAvatar: 0

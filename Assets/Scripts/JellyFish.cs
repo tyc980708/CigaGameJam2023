@@ -286,30 +286,32 @@ public class JellyFish : BaseActor
             GetHurt();
             hurtTimer = -2f;
         }
+
+        if (isHurting) state = 1;
     }
 
     public void GetHurt()
     {
         if (hurtCDTimer > 0f) return;
 
-            animator.SetTrigger("isTouched");
+        animator.SetTrigger("isTouched");
 
-            AudioManager.PlaySound("Avatar_Hurt");
+        AudioManager.PlaySound("Avatar_Hurt");
 
-            lightNum -= 1;
+        lightNum -= 1;
 
-            // Protection
-            if (lightNum < 1)
-            {
-                lightNum = 1;
-                touchedRecoverFactor = 0f;
-            }
+        // Protection
+        if (lightNum < 1)
+        {
+            lightNum = 1;
+            touchedRecoverFactor = 0f;
+        }
 
-            hurtCDTimer = 1f;
+        hurtCDTimer = 1f;
 
-            lightSpot_1.tinkleCursor = 0f;
-            lightSpot_2.tinkleCursor = 0f;
-            lightSpot_3.tinkleCursor = 0f;
+        lightSpot_1.tinkleCursor = 0f;
+        lightSpot_2.tinkleCursor = 0f;
+        lightSpot_3.tinkleCursor = 0f;
     }
 
     public void TaintLittingControl()

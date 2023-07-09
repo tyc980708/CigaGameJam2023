@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Evo_2_Dash_Loop
+  m_Name: Avatar_Eco_1_Dash_Loop
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,21 +21,21 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 8923627894558887534, guid: ebbcaa32c6bd6f2479ad42241bdbb898, type: 3}
+      value: {fileID: -6487446965776802491, guid: 8fd0596918d13d74db5ef4ed73400e2c, type: 3}
     - time: 0.083333336
-      value: {fileID: -5331443387456246196, guid: 17355f3d5c5086848acd63f0963c3763, type: 3}
+      value: {fileID: -3730304197742587999, guid: 4bab5bdcdd5d7314489c8ea79ad110e6, type: 3}
     - time: 0.16666667
-      value: {fileID: 8923627894558887534, guid: ebbcaa32c6bd6f2479ad42241bdbb898, type: 3}
+      value: {fileID: -6487446965776802491, guid: 8fd0596918d13d74db5ef4ed73400e2c, type: 3}
     - time: 0.25
-      value: {fileID: -5331443387456246196, guid: 17355f3d5c5086848acd63f0963c3763, type: 3}
+      value: {fileID: -3730304197742587999, guid: 4bab5bdcdd5d7314489c8ea79ad110e6, type: 3}
     - time: 0.33333334
-      value: {fileID: 8923627894558887534, guid: ebbcaa32c6bd6f2479ad42241bdbb898, type: 3}
+      value: {fileID: -6487446965776802491, guid: 8fd0596918d13d74db5ef4ed73400e2c, type: 3}
     - time: 0.41666666
-      value: {fileID: -5331443387456246196, guid: 17355f3d5c5086848acd63f0963c3763, type: 3}
+      value: {fileID: -3730304197742587999, guid: 4bab5bdcdd5d7314489c8ea79ad110e6, type: 3}
     - time: 0.5
-      value: {fileID: 8923627894558887534, guid: ebbcaa32c6bd6f2479ad42241bdbb898, type: 3}
+      value: {fileID: -6487446965776802491, guid: 8fd0596918d13d74db5ef4ed73400e2c, type: 3}
     - time: 0.5833333
-      value: {fileID: -5331443387456246196, guid: 17355f3d5c5086848acd63f0963c3763, type: 3}
+      value: {fileID: -3730304197742587999, guid: 4bab5bdcdd5d7314489c8ea79ad110e6, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -58,14 +58,14 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 8923627894558887534, guid: ebbcaa32c6bd6f2479ad42241bdbb898, type: 3}
-    - {fileID: -5331443387456246196, guid: 17355f3d5c5086848acd63f0963c3763, type: 3}
-    - {fileID: 8923627894558887534, guid: ebbcaa32c6bd6f2479ad42241bdbb898, type: 3}
-    - {fileID: -5331443387456246196, guid: 17355f3d5c5086848acd63f0963c3763, type: 3}
-    - {fileID: 8923627894558887534, guid: ebbcaa32c6bd6f2479ad42241bdbb898, type: 3}
-    - {fileID: -5331443387456246196, guid: 17355f3d5c5086848acd63f0963c3763, type: 3}
-    - {fileID: 8923627894558887534, guid: ebbcaa32c6bd6f2479ad42241bdbb898, type: 3}
-    - {fileID: -5331443387456246196, guid: 17355f3d5c5086848acd63f0963c3763, type: 3}
+    - {fileID: -6487446965776802491, guid: 8fd0596918d13d74db5ef4ed73400e2c, type: 3}
+    - {fileID: -3730304197742587999, guid: 4bab5bdcdd5d7314489c8ea79ad110e6, type: 3}
+    - {fileID: -6487446965776802491, guid: 8fd0596918d13d74db5ef4ed73400e2c, type: 3}
+    - {fileID: -3730304197742587999, guid: 4bab5bdcdd5d7314489c8ea79ad110e6, type: 3}
+    - {fileID: -6487446965776802491, guid: 8fd0596918d13d74db5ef4ed73400e2c, type: 3}
+    - {fileID: -3730304197742587999, guid: 4bab5bdcdd5d7314489c8ea79ad110e6, type: 3}
+    - {fileID: -6487446965776802491, guid: 8fd0596918d13d74db5ef4ed73400e2c, type: 3}
+    - {fileID: -3730304197742587999, guid: 4bab5bdcdd5d7314489c8ea79ad110e6, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -90,4 +90,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0
+    functionName: playAnimationSound
+    data: Avatar_Dash_Loop
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 1
+    intParameter: 0
+    messageOptions: 0

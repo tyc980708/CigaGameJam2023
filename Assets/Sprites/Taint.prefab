@@ -67,7 +67,8 @@ MonoBehaviour:
   isAvatar: 0
   isEnemy: 1
   isFriend: 0
-  thinkInterval: 0
+  thinkInterval: 1
+  thinkTimer: 0
   state: 0
   focusedTarget: {fileID: 0}
   level: 0

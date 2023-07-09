@@ -36,7 +36,8 @@ public class BaseActor : MonoBehaviour
     public bool isFriend;
 
     public float thinkInterval = 2f;
-    private float thinkTimer;
+    [HideInInspector]
+    public float thinkTimer;
 
     public int state; // 0 - Idle; 1 - inDanger; 2 - Follow
     public BaseActor focusedTarget;
@@ -54,7 +55,7 @@ public class BaseActor : MonoBehaviour
     {
         ParametersControl();
 
-        AI();
+        state = 0;
     }
 
     public void DoMove(Vector2 position)
@@ -102,30 +103,5 @@ public class BaseActor : MonoBehaviour
     public void DoCall()
     {
         wave.isCalled = true;
-    }
-
-    public void AI()
-    {
-        state = 0;
-
-        if (isAvatar) return;
-
-        if (isEnemy) return;
-
-        if (isFriend)
-        {
-            if (thinkTimer < thinkInterval)
-            {
-                thinkTimer += Time.deltaTime;
-            }
-            else
-            {
-                thinkTimer = 0f;
-            }
-
-
-        }
-
-
     }
 }

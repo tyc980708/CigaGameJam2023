@@ -91,6 +91,7 @@ public class Enemy : BaseActor
             JellyFish jelly = other.transform.GetComponent<JellyFish>();
 
             jelly.isHurting = true;
+            jelly.focusedTarget = this;
 
             if (!jelliesBeingHurting.Contains(jelly))
             {

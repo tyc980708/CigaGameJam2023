@@ -52,4 +52,5 @@ MonoBehaviour:
   friendNum: 5
   activeRange: 50
   protectionRange: 15
-  evo3Range: 0
+  evo3Range: 30
+  cast: {fileID: 0}

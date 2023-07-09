@@ -25,6 +25,9 @@ public class GlobalController : MonoBehaviour
 
     public float evo3Range;
 
+    [Header("演职人员")]
+    public GameObject cast;
+
 
     private List<GameObject> activeEnemies = new List<GameObject>();
     private List<GameObject> activeFriends = new List<GameObject>();
@@ -90,7 +93,7 @@ public class GlobalController : MonoBehaviour
                 //需要额外加一个是否帮助过判断，帮助过了就移出列表腾格子
                 //再增加一个是否和现在等级相同，尽量生成新等级的
                 var friend = activeFriends[i].GetComponent<Friend>();
-                if ((friend != null && friend.isHelped) || friend.evoLevel != avatarLevel)
+                if ((friend != null && friend.isHelped) || (friend.evoLevel != avatarLevel && avatarLevel < 3))
                     activeFriends.RemoveAt(i);
             }
 
@@ -118,17 +121,19 @@ public class GlobalController : MonoBehaviour
             }
         }
         _frameCount++;
+        if (avatarLevel == 3)
+            cast.SetActive(true);
     }
 
     public GameObject EnemyGenerator(GameObject obj)
     {
-        Vector3 pos = RandPos();
+        Vector3 pos = RandPos(protectionRange, activeRange, center.position);
         Vector3 rotation = new Vector3(0f, 0f, Random.Range(0f, 360f));
         return Object.Instantiate(obj, pos, Quaternion.Euler(rotation.x, rotation.y, rotation.z));
     }
     public GameObject FriendGenerator(GameObject obj)
     {
-        Vector3 pos = RandPos();
+        Vector3 pos = RandPos(protectionRange, activeRange, center.position);
         Vector3 rotation = new Vector3(0f, 0f, Random.Range(0f, 360f));
         var go = Object.Instantiate(obj, pos, Quaternion.Euler(rotation.x, rotation.y, rotation.z));
         go.GetComponent<Friend>().evoLevel = RandEvoLevel();
@@ -137,10 +142,29 @@ public class GlobalController : MonoBehaviour
     }
     public GameObject Evo3Generator(GameObject obj)
     {
-        Vector3 pos = RandPos();
+        Vector3 pos = RandPos(protectionRange, activeRange, center.position);
         Vector3 rotation = new Vector3(0f, 0f, Random.Range(0f, 360f));
         var go = Object.Instantiate(obj, pos, Quaternion.Euler(rotation.x, rotation.y, rotation.z));
         go.GetComponent<Friend>().evoLevel = 3f;
+
+        for (int i = 0; i <= 4; i++)
+        {
+            bool generate = Random.Range(1, 3) != 1;
+            if (generate)
+            {
+                Vector3 subpos = RandPos(3f, 10f, pos);
+                Vector3 subrot = new Vector3(0f, 0f, Random.Range(0f, 360f));
+                AccompanyGenerator(friend, subpos, subrot);
+            }
+        }
+
+        return go;
+    }
+    public GameObject AccompanyGenerator(GameObject obj, Vector3 pos, Vector3 rotation)
+    {
+        var go = Object.Instantiate(obj, pos, Quaternion.Euler(rotation.x, rotation.y, rotation.z));
+        go.GetComponent<Friend>().evoLevel = RandEvoLevel();
+        go.GetComponent<Friend>().isHelped = false;
         return go;
     }
 
@@ -164,14 +188,14 @@ public class GlobalController : MonoBehaviour
         }
         return 1f;
     }
-    private Vector3 RandPos()
+    private Vector3 RandPos(float protectionRange, float activeRange, Vector3 center)
     {
         Vector3 pos = new Vector3(0, 0, 0);
         do
         {
             Vector3 dir = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f).normalized;
             float dist = Random.Range(protectionRange, activeRange);
-            pos = center.position + dir * dist;
+            pos = center + dir * dist;
         }
         while (false);
         return pos;

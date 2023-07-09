@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using static UnityEditor.PlayerSettings;
 
 public class GlobalController : MonoBehaviour
 {
@@ -21,6 +22,8 @@ public class GlobalController : MonoBehaviour
 
     // 保护距离
     public float protectionRange;
+
+    public float evo3Range;
 
 
     private List<GameObject> activeEnemies = new List<GameObject>();
@@ -121,28 +124,31 @@ public class GlobalController : MonoBehaviour
         go.GetComponent<Friend>().isHelped = false;
         return go;
     }
+    public GameObject Evo3Generator(GameObject obj)
+    {
+        Vector3 pos = RandPos();
+        Vector3 rotation = new Vector3(0f, 0f, Random.Range(0f, 360f));
+        return Object.Instantiate(obj, pos, Quaternion.Euler(rotation.x, rotation.y, rotation.z));
+    }
 
     private float RandEvoLevel()
     {
         switch (avatarLevel)
         {
-            case 1:
-                var rd1 = Random.Range(1, 6);
-                if (rd1 >= 3) return 1;
-                else if (rd1 >= 4) return 2;
-                else return 3;
-            case 2:
-                var rd2 = Random.Range(1, 6);
-                if (rd2 >= 3) return 2;
-                else if (rd2 >= 4) return 1;
-                else return 3;
-            case 3:
-                var rd3 = Random.Range(1, 6);
-                if (rd3 >= 3) return 3;
-                else if (rd3 >= 4) return 2;
-                else return 1;
+            case 1f:
+                var rd1 = Random.Range(1f, 5f);
+                if (rd1 <= 4f) return 1f;
+                else return 2f;
+            case 2f:
+                var rd2 = Random.Range(1f, 5f);
+                if (rd2 <= 4f) return 2f;
+                else return 1f;
+            case 3f:
+                var rd3 = Random.Range(1, 3);
+                if (rd3 == 1) return 1f;
+                else return 2f;
         }
-        return 1;
+        return 1f;
     }
     private Vector3 RandPos()
     {

@@ -13,6 +13,7 @@ public class AudioInit : MonoBehaviour
     {
         StartCoroutine(AudioManager.StartFade(audioMixer, "MasterVolume", 5.0f, 100f));
         AudioManager.globalEmitter = this;
+        AudioManager.listener = FindFirstObjectByType<AudioListener>();
     }
 
     // Update is called once per frame

@@ -12,6 +12,7 @@ public class Wave : MonoBehaviour
     public float evoLevel;
     public float callCD;
     public bool isInCD;
+    public bool isAudioPlayed;
 
     public bool isEnemy;
     public bool isFriend;
@@ -57,6 +58,11 @@ public class Wave : MonoBehaviour
 
         if (isCalled)
         {
+            if (!isAudioPlayed && !isEnemy)
+            {
+                AudioManager.PlaySound("Avatar_Call_Normal", 0, owner.gameObject, isFriend);
+                isAudioPlayed = true;
+            }
             curSize += waveSpeed * Time.deltaTime;
             // collider.enabled = true;
         }
@@ -118,6 +124,8 @@ public class Wave : MonoBehaviour
         {
             curSize = owner.size * 0.9f;
         }
+
+        isAudioPlayed = false;
     }
 
     public void AlphaControl()

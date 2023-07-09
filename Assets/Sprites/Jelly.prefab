@@ -414,7 +414,7 @@ MonoBehaviour:
   size: 1
   speed: 1.5
   acceleration: 2
-  steerLerpRatio: 3
+  steerLerpRatio: 1
   isCalled: 0
   wave: {fileID: 0}
   curSize: 0
@@ -454,6 +454,7 @@ MonoBehaviour:
       m_Calls: []
   helpedColor: {r: 0.827451, g: 1, b: 0.5411765, a: 0.78431374}
   targetDirection: {x: 0, y: 0, z: 0}
+  isMove: 0
 --- !u!212 &2456158209781516814
 SpriteRenderer:
   m_ObjectHideFlags: 0

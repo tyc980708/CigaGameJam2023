@@ -23,7 +23,7 @@ public class Enemy : BaseActor
 
         level = (int)Random.Range(1, 3);
 
-        size = Random.Range(1, 4) * level;
+        size = Random.Range(1, 8) * level;
 
         cd = GetComponent<Collider2D>();
     }

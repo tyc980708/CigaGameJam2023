@@ -10,6 +10,8 @@ public class Friend : JellyFish
     public Color helpedColor;
 
     public Vector3 targetDirection;
+
+    public bool isMove;
     
     // Start is called before the first frame update
     public void Start()
@@ -51,21 +53,59 @@ public class Friend : JellyFish
                 if (dice >= 3f)
                 {
                     targetDirection = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f).normalized;
-                    if (curSpeed < speed) curSpeed += curAcceleration * Time.fixedDeltaTime;
-                    if (curSpeed > speed) curSpeed = Mathf.Lerp(curSpeed, speed, 1f * Time.fixedDeltaTime);
+                    isMove = true;
                 }
                 else
                 {
-                    targetDirection = Vector3.zero;
-                    if (curSpeed > 0f) curSpeed -= curAcceleration * Time.fixedDeltaTime;
+                    // targetDirection = Vector3.up;
+                    isMove = false;
                 }
             }
             else if (state == 1)
             {
                 targetDirection = (transform.position - focusedTarget.transform.position).normalized;
+
+                isMove = true;
+
                 if (!isDashing) dashEvent.Invoke();
                 else exitDashEvent.Invoke();
             }
+            else if (state == 2)
+            {
+                targetDirection = (focusedTarget.transform.position - transform.position).normalized;
+
+                isMove = true;
+
+                if (!isDashing) 
+                {
+                    float dice = Random.Range(0f, 6f);
+                    if (dice > 3) dashEvent.Invoke();
+                }
+                else exitDashEvent.Invoke();
+            }
+
+            if (focusedTarget && focusedTarget.gameObject.tag == "Jelly")
+            {
+                float dice = Random.Range(0f, 6f);
+                if (dice > 3f)
+                {
+                    state = 2;
+                }
+                else
+                {
+                    state = 0;
+                }
+            }
+        }
+
+        if (isMove) 
+        {
+            if (curSpeed < speed) curSpeed += curAcceleration * Time.fixedDeltaTime;
+            if (curSpeed > speed) curSpeed = Mathf.Lerp(curSpeed, speed, 1f * Time.fixedDeltaTime);
+        }
+        else
+        {
+            if (curSpeed > 0f) curSpeed -= curAcceleration * 0.1f * Time.fixedDeltaTime;
         }
 
         DoMove((Vector2)(transform.position + targetDirection));

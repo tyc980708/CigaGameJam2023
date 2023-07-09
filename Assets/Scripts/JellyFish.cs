@@ -385,10 +385,11 @@ public class JellyFish : BaseActor
 
             if (jelly.evoLevel >= evoLevel)
             {
-                AudioManager.PlaySound("Guangdian_Merge_03", lightNum);
-
-                AudioManager.PlaySound("Guangdian_Stinger", lightNum);
-
+                if (isAvatar)
+                {
+                    AudioManager.PlaySound("Guangdian_Merge_03", lightNum);
+                    AudioManager.PlaySound("Guangdian_Stinger", lightNum);
+                }
                 lightNum += 1;
             }
 

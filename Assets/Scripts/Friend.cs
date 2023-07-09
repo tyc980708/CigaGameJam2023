@@ -8,6 +8,7 @@ public class Friend : JellyFish
 {
 
     public Color helpedColor;
+    public Color originalColor;
 
     public Vector3 targetDirection;
 
@@ -17,6 +18,13 @@ public class Friend : JellyFish
     public void Start()
     {
         base.Start();
+
+        if (evoLevel < 3) 
+        {
+            lightNum = Random.Range(1, 3);
+        }
+
+        originalColor = lightSphere.GetComponent<SpriteRenderer>().color;
     }
 
     // Update is called once per frame
@@ -34,6 +42,10 @@ public class Friend : JellyFish
         if (isHelped)
         {
             lightSphere.GetComponent<SpriteRenderer>().color = Color.Lerp(lightSphere.GetComponent<SpriteRenderer>().color, helpedColor, Time.deltaTime);
+        }
+        else
+        {
+            lightSphere.GetComponent<SpriteRenderer>().color = Color.Lerp(lightSphere.GetComponent<SpriteRenderer>().color, originalColor, Time.deltaTime);
         }
     }
 

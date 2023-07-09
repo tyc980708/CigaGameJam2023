@@ -285,6 +285,9 @@ public class JellyFish : BaseActor
             if (evoLevel == 2)
                 AudioManager.PlayBGM("Music_Comfort");
             lightNum = 1;
+
+            helpedJellies.Clear();
+            isHelped = false;
         }
     }
 
@@ -378,13 +381,16 @@ public class JellyFish : BaseActor
 
             animator.SetTrigger("isTouched");
 
-            if ( helpedJellies.Contains(jelly) || jelly.evoLevel < evoLevel) return;
+            if ( helpedJellies.Contains(jelly)) return;
 
-            AudioManager.PlaySound("Guangdian_Merge_03", lightNum);
+            if (jelly.evoLevel >= evoLevel)
+            {
+                AudioManager.PlaySound("Guangdian_Merge_03", lightNum);
 
-            AudioManager.PlaySound("Guangdian_Stinger", lightNum);
+                AudioManager.PlaySound("Guangdian_Stinger", lightNum);
 
-            lightNum += 1;
+                lightNum += 1;
+            }
 
             helpedJellies.Add(jelly);
 

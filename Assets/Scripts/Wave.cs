@@ -45,6 +45,11 @@ public class Wave : MonoBehaviour
             waveSpeed = 5f;
             maxDistance = 10f;
         }
+        else
+        {
+            waveSpeed = 15f;
+            maxDistance = 60f;
+        }
 
         transform.localScale = Vector3.Lerp(transform.localScale, Vector3.one * curSize, 2f * Time.deltaTime);
 

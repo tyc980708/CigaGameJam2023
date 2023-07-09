@@ -152,7 +152,6 @@ public class Wave : MonoBehaviour
                 if (isAvatar && someone_s_wave.isFriend && isCalled && !someone_s_wave.isCalled)
                 {
                     someone.DoCall();
-                    print(owner.gameObject.name);
                 }
             }
         }

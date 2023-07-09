@@ -88,7 +88,7 @@ public class Enemy : BaseActor
     {
         Transform theOther = other.transform.parent;
 
-        if (theOther.gameObject.tag == "Jelly")
+        if (other.gameObject.tag == "Jelly")
         {
             JellyFish jelly = theOther.GetComponent<JellyFish>();
 
@@ -106,7 +106,7 @@ public class Enemy : BaseActor
     {
         Transform theOther = other.transform.parent;
 
-        if (theOther.gameObject.tag == "Jelly")
+        if (other.gameObject.tag == "Jelly")
         {
             JellyFish jelly = theOther.GetComponent<JellyFish>();
 

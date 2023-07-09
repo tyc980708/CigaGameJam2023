@@ -372,7 +372,7 @@ public class JellyFish : BaseActor
     {
         Transform theOther = other.transform.parent;
 
-        if (theOther.gameObject.tag == "Jelly")
+        if (other.gameObject.tag == "Jelly")
         {
             JellyFish jelly = theOther.GetComponent<JellyFish>();
 
@@ -391,9 +391,9 @@ public class JellyFish : BaseActor
             if (isAvatar) jelly.isHelped = true;
         }
 
-        if (theOther.gameObject.tag == "Taint")
+        if (other.gameObject.tag == "Taint")
         {
-            Enemy taint = theOther.GetComponent<Enemy>();
+            Enemy taint = other.GetComponent<Enemy>();
 
             if (!littenEnemies.Contains(taint)) littenEnemies.Add(taint);
 
@@ -405,9 +405,9 @@ public class JellyFish : BaseActor
     {
         Transform theOther = other.transform.parent;
 
-        if (theOther.gameObject.tag == "Taint")
+        if (other.gameObject.tag == "Taint")
         {
-            Enemy taint = theOther.GetComponent<Enemy>();
+            Enemy taint = other.GetComponent<Enemy>();
 
             if (littenEnemies.Contains(taint)) littenEnemies.Remove(taint);
 

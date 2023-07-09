@@ -118,5 +118,15 @@ public class Enemy : BaseActor
             }
         }
     }
+
+    public void GoCrazy()
+    {
+        float dice = Random.Range(1f, 50f);
+
+        if (dice < 2f)
+        {
+            DoCall();
+        }
+    }
 }
 

@@ -128,7 +128,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      iconmonstr-reload-thin-240_0: 7915376927953458626
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -36,7 +36,7 @@ Transform:
   m_Children:
   - {fileID: 3398634941948368026}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7947206081283976753
 MonoBehaviour:
@@ -54,9 +54,9 @@ MonoBehaviour:
   isDashing: 0
   dashFactor: 0
   size: 1
-  speed: 0
-  acceleration: 0
-  steerLerpRatio: 0
+  speed: 1.3
+  acceleration: 2
+  steerLerpRatio: 0.75
   isCalled: 0
   wave: {fileID: 0}
   curSize: 0
@@ -349,7 +349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveSpeed: 30
-  maxDistance: 30
+  maxDistance: 15
   isCalled: 0
   curSize: 0
   evoLevel: 0

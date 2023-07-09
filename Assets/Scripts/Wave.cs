@@ -145,6 +145,8 @@ public class Wave : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
+        if (isEnemy) return;
+
         Wave someone_s_wave = other.transform.GetComponent<Wave>();
         BaseActor someone = someone_s_wave.owner;
 
@@ -163,11 +165,18 @@ public class Wave : MonoBehaviour
                     }
                 }
             }
+
+            if (someone.gameObject.tag == "Taint")
+            {
+                // someone.transform.GetComponent<Enemy>().GoCrazy();
+            }
         }
     }
 
     public void OnTriggerExit2D(Collider2D other)
     {
+        if (isEnemy) return;
+
         BaseActor someone = other.transform.GetComponent<Wave>().owner;
 
         if (hearedList.Contains(someone))

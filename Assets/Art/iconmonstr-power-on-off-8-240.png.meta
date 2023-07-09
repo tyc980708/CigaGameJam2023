@@ -152,7 +152,9 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      iconmonstr-power-on-off-8-240_0: 3035033806531466638
+      iconmonstr-power-on-off-8-240_1: -8723741573156187954
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -207,7 +207,7 @@ PrefabInstance:
       objectReference: {fileID: 1296353734}
     - target: {fileID: 7189078084677515242, guid: 6ce057418d401e54b8ca5d4d5facdbb5, type: 3}
       propertyPath: friendNum
-      value: 100
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8154782881054122501, guid: 6ce057418d401e54b8ca5d4d5facdbb5, type: 3}
       propertyPath: m_RootOrder

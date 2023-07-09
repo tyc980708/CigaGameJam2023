@@ -147,6 +147,7 @@ public class GlobalController : MonoBehaviour
         Vector3 rotation = new Vector3(0f, 0f, Random.Range(0f, 360f));
         var go = Object.Instantiate(obj, pos, Quaternion.Euler(rotation.x, rotation.y, rotation.z));
         go.GetComponent<Friend>().evoLevel = 3f;
+        go.GetComponent<Friend>().isHelped = false;
 
         for (int i = 0; i <= 4; i++)
         {

@@ -93,7 +93,7 @@ public class GlobalController : MonoBehaviour
                 //需要额外加一个是否帮助过判断，帮助过了就移出列表腾格子
                 //再增加一个是否和现在等级相同，尽量生成新等级的
                 var friend = activeFriends[i].GetComponent<Friend>();
-                if ((friend != null && friend.isHelped) || (friend.evoLevel != avatarLevel && avatarLevel < 3))
+                if ((friend != null && friend.isHelped) || (friend.evoLevel < avatarLevel))
                     activeFriends.RemoveAt(i);
             }
 
@@ -121,7 +121,7 @@ public class GlobalController : MonoBehaviour
             }
         }
         _frameCount++;
-        if (avatarLevel == 3)
+        if (avatarLevel >= 3)
             cast.SetActive(true);
     }
 

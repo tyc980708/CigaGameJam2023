@@ -83,7 +83,8 @@ public class JellyFish : BaseActor
 
     public void LightSphereControl()
     {
-        size = 0.5f + (lightNum + 3f * (evoLevel - 1f)) * sizePerLightNum * touchedRecoverFactor;
+        if (evoLevel < 3) size = 0.5f + (lightNum + 3f * (evoLevel - 1f)) * sizePerLightNum * touchedRecoverFactor;
+        else size = 0.5f + (lightNum + 3f * (evoLevel - 1f)) * sizePerLightNum;
 
         if (touchedRecoverFactor < 1f)
         {

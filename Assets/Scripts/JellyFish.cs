@@ -294,6 +294,8 @@ public class JellyFish : BaseActor
 
             animator.SetTrigger("isTouched");
 
+            //AudioManager.PlaySound("Avatar_Hurt");
+
             lightNum -= 1;
 
             // Protection
@@ -351,6 +353,8 @@ public class JellyFish : BaseActor
             animator.SetTrigger("isTouched");
 
             if (jelly.isHelped || jelly.evoLevel < evoLevel) return;
+
+            AudioManager.PlaySound("Guangdian_Merge_03", lightNum);
 
             lightNum += 1;
 

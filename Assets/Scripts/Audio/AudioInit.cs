@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using static Unity.VisualScripting.Member;
 
 public class AudioInit : MonoBehaviour
 {
@@ -20,5 +21,14 @@ public class AudioInit : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void ChangeBGM(string eventName)
+    {
+        StartCoroutine(AudioManager.FadeOut(audioSource, 0.5f));
+        var clip = Resources.Load<AudioClip>("Audio/BGM/" + eventName);
+        if (clip != null)
+            audioSource.clip = clip;
+        audioSource.Play();
     }
 }

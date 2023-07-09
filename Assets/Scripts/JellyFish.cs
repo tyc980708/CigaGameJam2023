@@ -264,6 +264,8 @@ public class JellyFish : BaseActor
         {
             evoLevel += 1f;
             GameObject.Find("GlobalController").GetComponent<GlobalController>().avatarLevel = evoLevel;
+            if (evoLevel == 2)
+                AudioManager.PlayBGM("Music_Comfort");
             lightNum = 1;
         }
     }

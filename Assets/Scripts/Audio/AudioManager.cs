@@ -66,6 +66,11 @@ public static class AudioManager
         }
     }
 
+    public static void PlayBGM(string eventName)
+    {
+        globalEmitter.ChangeBGM(eventName);
+    }
+
     public static IEnumerator StartFade(AudioMixer audioMixer, string exposedParam, float duration, float targetVolume)
     {
         float currentTime = 0;

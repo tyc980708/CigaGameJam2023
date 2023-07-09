@@ -34,6 +34,8 @@ public class JellyFish : BaseActor
 
     public Transform colliders;
 
+    public bool isEvoluted;
+
     [HideInInspector]
     public UnityEvent dashEvent;
     [HideInInspector]
@@ -288,8 +290,9 @@ public class JellyFish : BaseActor
             }
             lightNum = 1;
 
-            helpedJellies.Clear();
-            isHelped = false;
+            // helpedJellies.Clear();
+            isEvoluted = true;
+            // isHelped = false;
         }
     }
 
@@ -383,7 +386,7 @@ public class JellyFish : BaseActor
 
             animator.SetTrigger("isTouched");
 
-            if (jelly.helpedJellies.Contains(this)) return;
+            if (helpedJellies.Contains(jelly) || jelly.isHelped) return;
 
             if (jelly.evoLevel >= evoLevel && evoLevel != 3)
             {
@@ -395,7 +398,7 @@ public class JellyFish : BaseActor
                 lightNum += 1;
             }
 
-            helpedJellies.Add(jelly);
+            if (!helpedJellies.Contains(jelly)) helpedJellies.Add(jelly);
 
             if (isAvatar) jelly.isHelped = true;
         }

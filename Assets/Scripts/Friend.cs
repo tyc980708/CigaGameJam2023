@@ -46,6 +46,8 @@ public class Friend : JellyFish
 
         ColorControl();
 
+        EvoControl2();
+
         AI();
     }
 
@@ -59,6 +61,17 @@ public class Friend : JellyFish
         {
             lightSphere.GetComponent<SpriteRenderer>().color = Color.Lerp(lightSphere.GetComponent<SpriteRenderer>().color, originalColor, Time.deltaTime);
         }
+    }
+
+    public void EvoControl2()
+    {
+        if (isEvoluted)
+        {
+            if (evoLevel >= avatar.evoLevel) isHelped = false;
+            isEvoluted = false;
+        }
+
+        if (evoLevel < avatar.evoLevel) isHelped = true;
     }
 
     public void AI()
@@ -97,9 +110,18 @@ public class Friend : JellyFish
             else if (state == 1)
             {
                 // targetDirection = (transform.position - focusedTarget.transform.position).normalized;
-                targetDirection = -transform.up;
-
-                isMove = true;
+                // targetDirection = -transform.up.normalized;
+                float dice = Random.Range(0f, 6f);
+                if (dice >= 3f)
+                {
+                    targetDirection = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f).normalized;
+                    isMove = true;
+                }
+                else
+                {
+                    // targetDirection = Vector3.up;
+                    isMove = false;
+                }
 
                 if (!isDashing) dashEvent.Invoke();
                 else exitDashEvent.Invoke();

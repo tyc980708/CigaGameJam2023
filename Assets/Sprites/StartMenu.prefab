@@ -134,7 +134,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1003148489890022180, guid: b11a20b3701012c4d88ecd883254cc9d, type: 3}
+  m_Sprite: {fileID: 4100371132875901156, guid: 164338eb69637e642847bc1d62ab42ad, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -213,4 +213,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startMenu: {fileID: 8043640579770424353}
-  pauseMenu: {fileID: 0}
+  mixer: {fileID: 0}

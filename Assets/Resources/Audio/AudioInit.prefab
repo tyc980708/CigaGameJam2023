@@ -33,7 +33,7 @@ Transform:
   - {fileID: 845824540021972810}
   - {fileID: 9181011848888024110}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5142316206897224108
 MonoBehaviour:
@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 8d22351298885b74f877ed68e64a1a4a, type: 2}
-  audioSource: {fileID: 5075227962168016216}
+  audioSource: {fileID: 2829422371723179189}
 --- !u!1 &3225095266776362453
 GameObject:
   m_ObjectHideFlags: 0

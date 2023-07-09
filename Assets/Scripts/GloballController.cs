@@ -62,6 +62,7 @@ public class GlobalController : MonoBehaviour
         if (_frameCount == 30)
         {
             _frameCount = 0;
+            center = GameObject.Find("Avatar").transform;
             //清理已经出距离的敌人
             for (int i = activeEnemies.Count - 1; i > 0; i--)
             {
@@ -132,7 +133,6 @@ public class GlobalController : MonoBehaviour
     }
     public GameObject FriendGenerator(GameObject obj)
     {
-        Debug.Log("generate");
         Vector3 pos = RandPos(protectionRange, activeRange, center.position);
         Vector3 rotation = new Vector3(0f, 0f, Random.Range(0f, 360f));
         var go = Object.Instantiate(obj, pos, Quaternion.Euler(rotation.x, rotation.y, rotation.z));
@@ -142,7 +142,6 @@ public class GlobalController : MonoBehaviour
     }
     public GameObject Evo3Generator(GameObject obj)
     {
-        Debug.Log("evogene");
         Vector3 pos = RandPos(protectionRange, activeRange, center.position);
         Vector3 rotation = new Vector3(0f, 0f, Random.Range(0f, 360f));
         var go = Object.Instantiate(obj, pos, Quaternion.Euler(rotation.x, rotation.y, rotation.z));
@@ -180,7 +179,6 @@ public class GlobalController : MonoBehaviour
                 else return 2f;
             case 2f:
                 var rd2 = Random.Range(1f, 5f);
-                Debug.LogError(rd2);
                 if (rd2 <= 4f) return 2f;
                 else return 1f;
             case 3f:

@@ -47,7 +47,6 @@ public class AnimationSound : MonoBehaviour
         if (audioSource.isPlaying)
             audioSource.Stop();
         var clip = Resources.Load<AudioClip>("Audio/SFX/" + eventName);
-        Debug.Log(clip);
         if (clip != null)
             audioSource.clip = clip;
         audioSource.Play();

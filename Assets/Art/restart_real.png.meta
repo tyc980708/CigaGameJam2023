@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 93f8b49a6f09d7443a0bb582d4f25974
+guid: 3572fcb3ae2a98f40ae0a7e3465f9374
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7915376927953458626
-    second: iconmonstr-reload-thin-240_0
+      213: -1484090739716065337
+    second: restart_real_0
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -98,13 +98,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: iconmonstr-reload-thin-240_0
+      name: restart_real_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 240
-        height: 240
+        x: 199
+        y: 198
+        width: 1203
+        height: 1203
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,8 +112,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2c51df5e06119dd60800000000000000
-      internalID: 7915376927953458626
+      spriteID: 7c7f6c4d553776be0800000000000000
+      internalID: -1484090739716065337
       vertices: []
       indices: 
       edges: []
@@ -129,7 +129,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      iconmonstr-reload-thin-240_0: 7915376927953458626
+      restart_real_0: -1484090739716065337
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

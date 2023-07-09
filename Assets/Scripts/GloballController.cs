@@ -125,6 +125,13 @@ public class GlobalController : MonoBehaviour
             cast.SetActive(true);
     }
 
+    public void Clear()
+    {
+        activeFriends.Clear();
+        activeEnemies.Clear();
+        activeEvo3s.Clear();
+    }
+
     public GameObject EnemyGenerator(GameObject obj)
     {
         Vector3 pos = RandPos(protectionRange, activeRange, center.position);

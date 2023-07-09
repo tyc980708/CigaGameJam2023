@@ -281,9 +281,11 @@ public class JellyFish : BaseActor
         if (lightNum > 3)
         {
             evoLevel += 1f;
-            GameObject.Find("GlobalController").GetComponent<GlobalController>().avatarLevel = evoLevel;
             if (isAvatar && evoLevel == 3)
+            {
                 AudioManager.PlayBGM("Music_Comfort");
+                GameObject.Find("GlobalController").GetComponent<GlobalController>().avatarLevel = evoLevel;
+            }
             lightNum = 1;
 
             helpedJellies.Clear();

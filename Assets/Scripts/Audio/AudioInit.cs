@@ -29,6 +29,11 @@ public class AudioInit : MonoBehaviour
         var clip = Resources.Load<AudioClip>("Audio/BGM/" + eventName);
         if (clip != null)
             audioSource.clip = clip;
+        Invoke("PlayBGM", 0.6f);
+    }
+
+    void PlayBGM()
+    {
         audioSource.Play();
     }
 }

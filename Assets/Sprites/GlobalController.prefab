@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7189078084677515242
 MonoBehaviour:
@@ -45,10 +45,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   center: {fileID: 1036439576205827044, guid: bc0f9cdf5c3d0e449bf5829ae7e5c5cb, type: 3}
-  avatarLevel: 0
+  avatarLevel: 1
   enemy: {fileID: 3512133520307228049, guid: 8f6673ed1a4e9c14e83c8caa329a8300, type: 3}
   friend: {fileID: 8526060843679919061, guid: 9ad8b622314ceb94b820fa4ff87f541d, type: 3}
   enemyNum: 30
   friendNum: 5
   activeRange: 50
   protectionRange: 15
+  evo3Range: 0

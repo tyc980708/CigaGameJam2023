@@ -9,7 +9,7 @@ public class GlobalController : MonoBehaviour
 {
     // 注册Actor
     public Transform center;
-    public float avatarLevel;
+    public float avatarLevel = 1f;
 
     public GameObject enemy;
     public GameObject friend;
@@ -60,8 +60,6 @@ public class GlobalController : MonoBehaviour
         if (_frameCount == 30)
         {
             _frameCount = 0;
-            //获取主角等级
-            avatarLevel = center.gameObject.GetComponent<Avatar>().evoLevel;
             //清理已经出距离的敌人
             for (int i = activeEnemies.Count - 1; i > 0; i--)
             {
@@ -90,8 +88,9 @@ public class GlobalController : MonoBehaviour
                     continue;
                 }
                 //需要额外加一个是否帮助过判断，帮助过了就移出列表腾格子
+                //再增加一个是否和现在等级相同，尽量生成新等级的
                 var friend = activeFriends[i].GetComponent<Friend>();
-                if (friend != null && friend.isHelped)
+                if ((friend != null && friend.isHelped) || friend.evoLevel != avatarLevel)
                     activeFriends.RemoveAt(i);
             }
 
@@ -155,6 +154,7 @@ public class GlobalController : MonoBehaviour
                 else return 2f;
             case 2f:
                 var rd2 = Random.Range(1f, 5f);
+                Debug.LogError(rd2);
                 if (rd2 <= 4f) return 2f;
                 else return 1f;
             case 3f:

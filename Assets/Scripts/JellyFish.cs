@@ -263,6 +263,7 @@ public class JellyFish : BaseActor
         if (lightNum > 3)
         {
             evoLevel += 1f;
+            GameObject.Find("GlobalController").GetComponent<GlobalController>().avatarLevel = evoLevel;
             lightNum = 1;
         }
     }
@@ -296,7 +297,8 @@ public class JellyFish : BaseActor
 
         animator.SetTrigger("isTouched");
 
-        AudioManager.PlaySound("Avatar_Hurt");
+        if (isAvatar)
+            AudioManager.PlaySound("Avatar_Hurt");
 
         lightNum -= 1;
 
@@ -357,6 +359,8 @@ public class JellyFish : BaseActor
             if (jelly.isHelped || jelly.evoLevel < evoLevel) return;
 
             AudioManager.PlaySound("Guangdian_Merge_03", lightNum);
+
+            AudioManager.PlaySound("Guangdian_Stinger", lightNum);
 
             lightNum += 1;
 

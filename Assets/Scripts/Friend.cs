@@ -96,7 +96,8 @@ public class Friend : JellyFish
             }
             else if (state == 1)
             {
-                targetDirection = (transform.position - focusedTarget.transform.position).normalized;
+                // targetDirection = (transform.position - focusedTarget.transform.position).normalized;
+                targetDirection = -transform.up;
 
                 isMove = true;
 

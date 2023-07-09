@@ -381,7 +381,7 @@ public class JellyFish : BaseActor
 
             animator.SetTrigger("isTouched");
 
-            if ( helpedJellies.Contains(jelly)) return;
+            if (jelly.helpedJellies.Contains(this)) return;
 
             if (jelly.evoLevel >= evoLevel && evoLevel != 3)
             {

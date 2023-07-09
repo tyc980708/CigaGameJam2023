@@ -99,7 +99,7 @@ public class GlobalController : MonoBehaviour
             var needNewEvo3 = true;
             foreach (var evo3 in activeEvo3s)
             {
-                if (Vector3.Distance(evo3.transform.position, center.position) > evo3Range)
+                if (Vector3.Distance(evo3.transform.position, center.position) < evo3Range)
                     needNewEvo3 = false;
             }
             if (needNewEvo3)
@@ -132,6 +132,7 @@ public class GlobalController : MonoBehaviour
     }
     public GameObject FriendGenerator(GameObject obj)
     {
+        Debug.Log("generate");
         Vector3 pos = RandPos(protectionRange, activeRange, center.position);
         Vector3 rotation = new Vector3(0f, 0f, Random.Range(0f, 360f));
         var go = Object.Instantiate(obj, pos, Quaternion.Euler(rotation.x, rotation.y, rotation.z));
@@ -141,6 +142,7 @@ public class GlobalController : MonoBehaviour
     }
     public GameObject Evo3Generator(GameObject obj)
     {
+        Debug.Log("evogene");
         Vector3 pos = RandPos(protectionRange, activeRange, center.position);
         Vector3 rotation = new Vector3(0f, 0f, Random.Range(0f, 360f));
         var go = Object.Instantiate(obj, pos, Quaternion.Euler(rotation.x, rotation.y, rotation.z));
